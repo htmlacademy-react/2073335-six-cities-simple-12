@@ -1,12 +1,12 @@
 import HeaderElement from '../../components/header-element/header-element';
 import CardOffers from '../../components/offer-card/offer-card';
 
-type AppScreenProps = {
+type WelcomeScreenProps = {
     rentOffers: number;
   }
 
 
-function WelcomeScreen({rentOffers}: AppScreenProps): JSX.Element {
+function WelcomeScreen({rentOffers}: WelcomeScreenProps): JSX.Element {
   return (
     <><HeaderElement />
       <main className="page__main page__main--index">
