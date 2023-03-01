@@ -2,12 +2,12 @@
 import WelcomeScreen from '../../pages/main-page/main-page';
 
 type AppScreenProps = {
-  rentOffers: number;
+  RentOffers: number;
 }
 
-function App({rentOffers}: AppScreenProps): JSX.Element {
+function App({RentOffers}: AppScreenProps): JSX.Element {
   return (
-    <WelcomeScreen rentOffers={rentOffers}/>
+    <WelcomeScreen rentOffers={RentOffers}/>
   );
 }
 
