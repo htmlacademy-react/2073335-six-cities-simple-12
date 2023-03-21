@@ -1,12 +1,15 @@
 import HeaderElement from '../../components/header-element/header-element';
-import CardOffers from '../../components/offer-card/offer-card';
+import { ListOffers } from '../../components/list-offers/list-offers';
+import { Offer } from '../../types/offer';
+
 
 type WelcomeScreenProps = {
     rentOffers: number;
+    rentalOffersOption: Offer[];
   }
 
 
-function WelcomeScreen({rentOffers}: WelcomeScreenProps): JSX.Element {
+function WelcomeScreen({rentOffers, rentalOffersOption}: WelcomeScreenProps): JSX.Element {
   return (
     <><HeaderElement />
       <main className="page__main page__main--index">
@@ -67,13 +70,7 @@ function WelcomeScreen({rentOffers}: WelcomeScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <CardOffers />
-                <CardOffers />
-                <CardOffers />
-                <CardOffers />
-                <CardOffers />
-              </div>
+              <ListOffers rentalOffersOption={rentalOffersOption.slice(0, rentOffers)} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
