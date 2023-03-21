@@ -1,7 +1,7 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import ErrorPage from '../../pages/error-page/error-page';
 import LoginPage from '../../pages/login-page/login-page';
-import WelcomeScreen from '../../pages/main-page/main-page';
+import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
 import { Offer } from '../../types/offer';
 import { Review } from '../../types/review';
@@ -20,7 +20,7 @@ function App({rentOffers, rentalOffersOption, reviews}: AppScreenProps): JSX.Ele
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={ <WelcomeScreen rentOffers={rentOffers} rentalOffersOption={rentalOffersOption} />}
+          element={ <MainPage rentOffers={rentOffers} rentalOffersOption={rentalOffersOption} />}
         />
         <Route
           path={AppRoute.Login}

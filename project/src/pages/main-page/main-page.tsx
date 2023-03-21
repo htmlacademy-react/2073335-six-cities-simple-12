@@ -3,13 +3,13 @@ import { ListOffers } from '../../components/list-offers/list-offers';
 import { Offer } from '../../types/offer';
 
 
-type WelcomeScreenProps = {
+type MainPageProps = {
     rentOffers: number;
     rentalOffersOption: Offer[];
   }
 
 
-function WelcomeScreen({rentOffers, rentalOffersOption}: WelcomeScreenProps): JSX.Element {
+function MainPage({rentOffers, rentalOffersOption}: MainPageProps): JSX.Element {
   return (
     <><HeaderElement />
       <main className="page__main page__main--index">
@@ -82,4 +82,4 @@ function WelcomeScreen({rentOffers, rentalOffersOption}: WelcomeScreenProps): JS
   );
 }
 
-export default WelcomeScreen;
+export default MainPage;
