@@ -28,9 +28,10 @@ function ReviewForm(): JSX.Element {
                 onChange={fieldChangeHandle}
                 className="form__rating-input visually-hidden"
                 name="rating"
-                value={count}
+                value={formData.rating}
                 id={`${count}-stars`}
                 type="radio"
+                checked={Number(formData.rating) === count}
               />
               <label
                 htmlFor={`${count}-stars`}
