@@ -1,12 +1,14 @@
 import HeaderElement from '../../components/header-element/header-element';
-import CardOffers from '../../components/offer-card/offer-card';
+import { ListOffers } from '../../components/list-offers/list-offers';
+import { Offer } from '../../types/offer';
 
-type WelcomeScreenProps = {
-    rentOffers: number;
+
+type MainPageProps = {
+    rentalOffersOption: Offer[];
   }
 
 
-function WelcomeScreen({rentOffers}: WelcomeScreenProps): JSX.Element {
+function MainPage({rentalOffersOption}: MainPageProps): JSX.Element {
   return (
     <><HeaderElement />
       <main className="page__main page__main--index">
@@ -51,7 +53,7 @@ function WelcomeScreen({rentOffers}: WelcomeScreenProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{rentOffers} places to stay in Amsterdam</b>
+              <b className="places__found">{rentalOffersOption.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -67,13 +69,7 @@ function WelcomeScreen({rentOffers}: WelcomeScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <CardOffers />
-                <CardOffers />
-                <CardOffers />
-                <CardOffers />
-                <CardOffers />
-              </div>
+              <ListOffers rentalOffersOption={rentalOffersOption} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -85,4 +81,4 @@ function WelcomeScreen({rentOffers}: WelcomeScreenProps): JSX.Element {
   );
 }
 
-export default WelcomeScreen;
+export default MainPage;

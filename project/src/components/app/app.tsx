@@ -1,21 +1,25 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import ErrorPage from '../../pages/error-page/error-page';
 import LoginPage from '../../pages/login-page/login-page';
-import WelcomeScreen from '../../pages/main-page/main-page';
+import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
+import { Offer } from '../../types/offer';
+import { Review } from '../../types/review';
 import { AppRoute } from '../const';
 
+
 type AppScreenProps = {
-  rentOffers: number;
+  rentalOffersOption: Offer[];
+  reviews: Review[];
 }
 
-function App({rentOffers}: AppScreenProps): JSX.Element {
+function App({rentalOffersOption, reviews}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={ <WelcomeScreen rentOffers={rentOffers}/>}
+          element={ <MainPage rentalOffersOption={rentalOffersOption} />}
         />
         <Route
           path={AppRoute.Login}
@@ -23,7 +27,11 @@ function App({rentOffers}: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Room}
-          element={<PropertyPage />}
+          element={
+            <PropertyPage
+              rentalOffersOption={rentalOffersOption}
+            />
+          }
         />
         <Route
           path="*"

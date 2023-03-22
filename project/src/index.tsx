@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-
-const Setting = {
-  RentOffers: 444,
-} as const;
+import { rentalOffersOption} from './mocks/offers';
+import { reviews } from './mocks/reviews';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -13,7 +11,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      rentOffers = {Setting.RentOffers}
+      rentalOffersOption={rentalOffersOption}
+      reviews={reviews}
     />
   </React.StrictMode>,
 );
