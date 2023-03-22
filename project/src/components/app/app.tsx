@@ -9,18 +9,17 @@ import { AppRoute } from '../const';
 
 
 type AppScreenProps = {
-  rentOffers: number;
   rentalOffersOption: Offer[];
   reviews: Review[];
 }
 
-function App({rentOffers, rentalOffersOption, reviews}: AppScreenProps): JSX.Element {
+function App({rentalOffersOption, reviews}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={ <MainPage rentOffers={rentOffers} rentalOffersOption={rentalOffersOption} />}
+          element={ <MainPage rentalOffersOption={rentalOffersOption} />}
         />
         <Route
           path={AppRoute.Login}
@@ -30,7 +29,7 @@ function App({rentOffers, rentalOffersOption, reviews}: AppScreenProps): JSX.Ele
           path={AppRoute.Room}
           element={
             <PropertyPage
-              rentalOffersOption={rentalOffersOption[0]}
+              rentalOffersOption={rentalOffersOption}
             />
           }
         />

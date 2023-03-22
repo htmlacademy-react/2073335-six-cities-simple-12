@@ -8,10 +8,10 @@ type ListOffersProps = {
 
 
 function ListOffers({rentalOffersOption}: ListOffersProps): JSX.Element {
-  const [, setActiveCard] = useState<number | null>(null);
+  const [, setActiveCard] = useState(-1);
   return (
     <div className="cities__places-list places__list tabs__content">
-      {rentalOffersOption.map((offer) => <CardOffers key={offer.id} rentalOffersOption={offer} setActiveCard={setActiveCard} />)}
+      {rentalOffersOption.map((offer) => (<CardOffers key={offer.id} offer={offer} setActiveCard={setActiveCard} />))}
     </div>
   );
 }

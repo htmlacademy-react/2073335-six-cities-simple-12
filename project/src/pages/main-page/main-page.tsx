@@ -4,12 +4,11 @@ import { Offer } from '../../types/offer';
 
 
 type MainPageProps = {
-    rentOffers: number;
     rentalOffersOption: Offer[];
   }
 
 
-function MainPage({rentOffers, rentalOffersOption}: MainPageProps): JSX.Element {
+function MainPage({rentalOffersOption}: MainPageProps): JSX.Element {
   return (
     <><HeaderElement />
       <main className="page__main page__main--index">
@@ -54,7 +53,7 @@ function MainPage({rentOffers, rentalOffersOption}: MainPageProps): JSX.Element 
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{rentOffers} places to stay in Amsterdam</b>
+              <b className="places__found">{rentalOffersOption.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -70,7 +69,7 @@ function MainPage({rentOffers, rentalOffersOption}: MainPageProps): JSX.Element 
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <ListOffers rentalOffersOption={rentalOffersOption.slice(0, rentOffers)} />
+              <ListOffers rentalOffersOption={rentalOffersOption} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

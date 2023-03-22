@@ -1,15 +1,31 @@
 import { Offer } from '../../types/offer';
 import ReviewForm from '../../components/review-form/review-form';
 import { AboutHost } from '../../components/about-host/about-host';
+import { Navigate, useParams } from 'react-router-dom';
 
 
 type PropertyPageProps = {
-  rentalOffersOption: Offer;
+  rentalOffersOption: Offer[];
 }
 
-function PropertyPage(props: PropertyPageProps): JSX.Element {
-  const {rentalOffersOption} = props;
-  const {bedrooms, maxAdults, price, rating, title, type} = rentalOffersOption;
+function PropertyPage({rentalOffersOption}: PropertyPageProps): JSX.Element {
+  const {id} = useParams() as {id: string};
+  const offer = rentalOffersOption.find((o) => o.id === parseInt(id, 10));
+
+  if (!offer) {
+    return <Navigate to="*"/>;
+  }
+  const {
+    type,
+    title,
+    rating,
+    bedrooms,
+    maxAdults,
+    price,
+    host,
+    description
+  } = offer;
+
   return (
     <main className="page__main page__main--property">
       <section className="property">
@@ -102,7 +118,7 @@ function PropertyPage(props: PropertyPageProps): JSX.Element {
                 </li>
               </ul>
             </div>
-            <AboutHost rentalOffersOption={rentalOffersOption} />
+            <AboutHost host={host} description={description} />
             <section className="property__reviews reviews">
               <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
               <ul className="reviews__list">

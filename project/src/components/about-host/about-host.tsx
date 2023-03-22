@@ -1,24 +1,25 @@
-import {Offer} from '../../types/offer';
+import {Host} from '../../types/offer';
 
 
 type AboutHostProps = {
-    rentalOffersOption: Offer;
+    host: Host;
+    description: string;
 }
 
-function AboutHost({rentalOffersOption}: AboutHostProps): JSX.Element {
-  const {description, host, title} = rentalOffersOption;
+function AboutHost({host: {name, isPro, avatarUrl}, description}: AboutHostProps): JSX.Element {
+
   return (
     <div className="property__host">
       <h2 className="property__host-title">Meet the host</h2>
       <div className="property__host-user user">
         <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-          <img className="property__avatar user__avatar" src={host.avatarUrl} width="74" height="74" alt="Host avatar"/>
+          <img className="property__avatar user__avatar" src={avatarUrl} width="74" height="74" alt="Host avatar"/>
         </div>
         <span className="property__user-name">
-          {host.name}
+          {name}
         </span>
         <span className="property__user-status">
-          {host.isPro}
+          {isPro}
         </span>
       </div>
       <div className="property__description">
@@ -26,7 +27,7 @@ function AboutHost({rentalOffersOption}: AboutHostProps): JSX.Element {
           {description}
         </p>
         <p className="property__text">
-          {title}
+          {description}
         </p>
       </div>
     </div>

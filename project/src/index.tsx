@@ -4,10 +4,6 @@ import App from './components/app/app';
 import { rentalOffersOption} from './mocks/offers';
 import { reviews } from './mocks/reviews';
 
-const Setting = {
-  RentOffers: 444,
-} as const;
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
@@ -15,7 +11,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      rentOffers={Setting.RentOffers}
       rentalOffersOption={rentalOffersOption}
       reviews={reviews}
     />
