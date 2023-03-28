@@ -36,11 +36,6 @@ const rentalOffersOption: Offer[] = [
     ],
     isFavorite: true,
     isPremium: true,
-    location: {
-      latitude: 52.3909553943508,
-      longitude: 4.85309666406198,
-      zoom: 8
-    },
     maxAdults: 4,
     previewImage: 'img/apartment-01.jpg',
     price: 110,
@@ -79,11 +74,6 @@ const rentalOffersOption: Offer[] = [
     ],
     isFavorite: true,
     isPremium: false,
-    location: {
-      latitude: 52.3609553943508,
-      longitude: 4.85309666406198,
-      zoom: 8
-    },
     maxAdults: 4,
     previewImage: 'img/apartment-02.jpg',
     price: 90,
@@ -122,11 +112,6 @@ const rentalOffersOption: Offer[] = [
     ],
     isFavorite: false,
     isPremium: false,
-    location: {
-      latitude: 52.3909553943508,
-      longitude: 4.929309666406198,
-      zoom: 8
-    },
     maxAdults: 4,
     previewImage: 'img/apartment-03.jpg',
     price: 80,
@@ -161,11 +146,6 @@ const rentalOffersOption: Offer[] = [
     ],
     isFavorite: true,
     isPremium: false,
-    location: {
-      latitude: 52.3809553943508,
-      longitude: 4.939309666406198,
-      zoom: 10
-    },
     maxAdults: 2,
     previewImage: 'img/apartment-02.jpg',
     price: 300,
@@ -204,11 +184,6 @@ const rentalOffersOption: Offer[] = [
     ],
     isFavorite: true,
     isPremium: false,
-    location: {
-      latitude: 52.3609553943508,
-      longitude: 4.85309666406198,
-      zoom: 8
-    },
     maxAdults: 4,
     previewImage: 'img/apartment-02.jpg',
     price: 90,
@@ -246,11 +221,6 @@ const rentalOffersOption: Offer[] = [
     ],
     isFavorite: true,
     isPremium: false,
-    location: {
-      latitude: 50.9333,
-      longitude: 6.95,
-      zoom: 8
-    },
     maxAdults: 4,
     previewImage: 'img/apartment-02.jpg',
     price: 90,
