@@ -1,14 +1,16 @@
 import HeaderElement from '../../components/header-element/header-element';
 import { ListOffers } from '../../components/list-offers/list-offers';
-import { Offer } from '../../types/offer';
+import Map from '../../components/map/map';
+import { City, Offer } from '../../types/offer';
 
 
 type MainPageProps = {
     rentalOffersOption: Offer[];
+    city: City;
   }
 
 
-function MainPage({rentalOffersOption}: MainPageProps): JSX.Element {
+function MainPage({rentalOffersOption, city}: MainPageProps): JSX.Element {
   return (
     <><HeaderElement />
       <main className="page__main page__main--index">
@@ -72,7 +74,7 @@ function MainPage({rentalOffersOption}: MainPageProps): JSX.Element {
               <ListOffers rentalOffersOption={rentalOffersOption} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map rentalOffersOption={rentalOffersOption} city={city}/>
             </div>
           </div>
         </div>
