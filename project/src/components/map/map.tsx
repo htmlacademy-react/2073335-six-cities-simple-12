@@ -23,8 +23,8 @@ function Map({city, rentalOffersOption}: MapProps): JSX.Element {
     if (map) {
       rentalOffersOption.forEach((point) => {
         const marker = new Marker({
-          lat: point.city.location.latitude,
-          lng: point.city.location.longitude
+          lat: point.location.latitude,
+          lng: point.location.longitude
         },
         {
           icon: defaultPin
