@@ -7,6 +7,7 @@ import { Icon, Marker } from 'leaflet';
 type MapProps = {
 city: City;
 rentalOffersOption: Offer[];
+className: string;
 }
 
 const defaultPin = new Icon({
@@ -15,7 +16,7 @@ const defaultPin = new Icon({
   iconAnchor: [13.5, 39]
 });
 
-function Map({city, rentalOffersOption}: MapProps): JSX.Element {
+function Map({city, rentalOffersOption, className}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -35,8 +36,8 @@ function Map({city, rentalOffersOption}: MapProps): JSX.Element {
     }
   }, [map, rentalOffersOption]);
 
-  return(
-    <section className="cities__map map" ref={mapRef}></section>
+  return (
+    <section className={`${className } map`} ref={mapRef}></section>
   );
 }
 
