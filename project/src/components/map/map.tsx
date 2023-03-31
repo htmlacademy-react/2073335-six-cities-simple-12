@@ -3,10 +3,12 @@ import 'leaflet/dist/leaflet.css';
 import { useRef, useEffect } from 'react';
 import { City, Offer } from '../../types/offer';
 import { Icon, Marker } from 'leaflet';
+import { MapClasses } from '../const';
 
 type MapProps = {
 city: City;
 rentalOffersOption: Offer[];
+isNearCard: boolean;
 }
 
 const defaultPin = new Icon({
@@ -15,7 +17,7 @@ const defaultPin = new Icon({
   iconAnchor: [13.5, 39]
 });
 
-function Map({city, rentalOffersOption}: MapProps): JSX.Element {
+function Map({city, rentalOffersOption, isNearCard}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -36,7 +38,7 @@ function Map({city, rentalOffersOption}: MapProps): JSX.Element {
   }, [map, rentalOffersOption]);
 
   return(
-    <section className="cities__map map" ref={mapRef}></section>
+    <section className={isNearCard ? MapClasses.PropertyMap : MapClasses.CitiesMap}ref={mapRef}></section>
   );
 }
 

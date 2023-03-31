@@ -31,6 +31,8 @@ function App({rentalOffersOption, reviews, city}: AppScreenProps): JSX.Element {
           element={
             <PropertyPage
               rentalOffersOption={rentalOffersOption}
+              city={city}
+              reviews={reviews}
             />
           }
         />
