@@ -21,7 +21,3 @@ export enum AdClasses {
   ListOffersCard = 'cities__places-list places__list tabs__content'
 }
 
-export enum MapClasses {
-  CitiesMap = 'cities__map map',
- PropertyMap = 'property__map map',
-}

@@ -71,10 +71,10 @@ function MainPage({rentalOffersOption, city}: MainPageProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <ListOffers isNearCard={false} rentalOffersOption={rentalOffersOption} />
+              <ListOffers className={'cities__places-list places__list tabs__content'} isNearCard={false} rentalOffersOption={rentalOffersOption} />
             </section>
             <div className="cities__right-section">
-              <Map isNearCard={false} rentalOffersOption={rentalOffersOption} city={city}/>
+              <Map isNearCard={false} rentalOffersOption={rentalOffersOption} city={city} className={'cities__map'}/>
             </div>
           </div>
         </div>

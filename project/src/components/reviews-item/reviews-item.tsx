@@ -1,10 +1,10 @@
 import { Review } from '../../types/review';
 
-type PropertyPageProps = {
+type ReviewItemProps = {
   review: Review;
 }
 
-function ReviewsItem({review}: PropertyPageProps): JSX.Element {
+function ReviewsItem({review}: ReviewItemProps): JSX.Element {
   const {
     comment,
     rating,

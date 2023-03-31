@@ -126,19 +126,18 @@ function PropertyPage({rentalOffersOption, city, reviews}: PropertyPageProps): J
             </div>
             <AboutHost host={host} description={description} />
             <section className="property__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
               <ReviewsList reviews={reviews} />
               <ReviewForm />
             </section>
           </div>
         </div>
-        <section className="property__map map"></section>
-        <Map rentalOffersOption={rentalOffersOption} city={city} isNearCard={false} />
+        <Map className="property__map" rentalOffersOption={rentalOffersOption} city={city} isNearCard />
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <ListOffers rentalOffersOption={rentalOffersOption} isNearCard />
+          <ListOffers className={'near-places__list places__list'} rentalOffersOption={rentalOffersOption} isNearCard />
         </section>
       </div>
     </main>
