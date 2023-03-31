@@ -74,7 +74,7 @@ function MainPage({rentalOffersOption, city}: MainPageProps): JSX.Element {
               <ListOffers className={'cities__places-list places__list tabs__content'} isNearCard={false} rentalOffersOption={rentalOffersOption} />
             </section>
             <div className="cities__right-section">
-              <Map isNearCard={false} rentalOffersOption={rentalOffersOption} city={city} className={'cities__map'}/>
+              <Map rentalOffersOption={rentalOffersOption} city={city} className={'cities__map'}/>
             </div>
           </div>
         </div>

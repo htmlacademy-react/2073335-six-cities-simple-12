@@ -7,7 +7,6 @@ import { Icon, Marker } from 'leaflet';
 type MapProps = {
 city: City;
 rentalOffersOption: Offer[];
-isNearCard: boolean;
 className: string;
 }
 
@@ -17,7 +16,7 @@ const defaultPin = new Icon({
   iconAnchor: [13.5, 39]
 });
 
-function Map({city, rentalOffersOption, isNearCard, className}: MapProps): JSX.Element {
+function Map({city, rentalOffersOption, className}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
