@@ -132,12 +132,12 @@ function PropertyPage({rentalOffersOption, city, reviews}: PropertyPageProps): J
             </section>
           </div>
         </div>
-        <Map className="property__map" rentalOffersOption={rentalOffersOption} city={city} isNearCard />
+        <Map className="property__map" rentalOffersOption={rentalOffersOption} city={city}/>
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <ListOffers className={'near-places__list places__list'} rentalOffersOption={rentalOffersOption} isNearCard />
+          <ListOffers className={'near-places__list'} rentalOffersOption={rentalOffersOption} cardClassName={'near-places'} />
         </section>
       </div>
     </main>

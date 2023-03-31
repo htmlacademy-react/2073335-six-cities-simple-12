@@ -1,15 +1,14 @@
 import { Offer } from '../../types/offer';
 import { Link, useNavigate } from 'react-router-dom';
-import { AdClasses} from '../const';
 import { MouseEventHandler } from 'react';
 
 type OfferCardProps = {
   offer: Offer;
   setActiveCard: (id: number) => void;
-  isNearCard: boolean;
+  cardClassName: string;
 }
 
-function CardOffers({offer: {isPremium, type, price, title, id, images}, isNearCard, setActiveCard}: OfferCardProps): JSX.Element {
+function CardOffers({offer: {isPremium, type, price, title, id, images}, cardClassName, setActiveCard}: OfferCardProps): JSX.Element {
 
   const navigate = useNavigate();
   const handleNavigateClick: MouseEventHandler<HTMLAnchorElement> = (evt) => {
@@ -19,13 +18,13 @@ function CardOffers({offer: {isPremium, type, price, title, id, images}, isNearC
 
   return (
     <Link to="#" onClick={handleNavigateClick}>
-      <article className={ isNearCard ? AdClasses.NearPlacesCard : AdClasses.CitiesCard} onMouseEnter={() => setActiveCard(id)} onMouseLeave={() => setActiveCard(-1)}>
+      <article className={`${cardClassName}__card place-card`} onMouseEnter={() => setActiveCard(id)} onMouseLeave={() => setActiveCard(-1)}>
         { isPremium ?
           <div className="place-card__mark">
             <span>Premium</span>
           </div>
           : '' }
-        <div className={isNearCard ? AdClasses.ImageWrapperNear : AdClasses.ImageWrapperCities}>
+        <div className={`${cardClassName}__image-wrapper place-card__image-wrapper`}>
 
           <img className="place-card__image" src={images[0]} width="260" height="200" alt={title} />
 
