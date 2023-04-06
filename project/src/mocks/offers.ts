@@ -5,11 +5,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 4,
     city: {
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
+        latitude: 48.862877,
+        longitude: 2.335397,
+        zoom: 8
       },
-      name: 'Amsterdam'
+      name: 'Paris'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: [
@@ -37,9 +37,9 @@ const rentalOffersOption: Offer[] = [
     isFavorite: true,
     isPremium: true,
     location: {
-      latitude: 52.3909553943508,
-      longitude: 4.85309666406198,
-      zoom: 8
+      latitude: 48.85341,
+      longitude: 2.34880,
+      zoom: 11,
     },
     maxAdults: 4,
     previewImage: 'img/apartment-01.jpg',
@@ -53,9 +53,10 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 52.3609553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
+
+        latitude: 52.374,
+        longitude: 4.88969,
+        zoom: 11,
       },
       name: 'Amsterdam'
     },
@@ -96,11 +97,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.929309666406198,
-        zoom: 10
+        latitude: 51.2217,
+        longitude: 6.77616,
+        zoom: 11,
       },
-      name: 'Amsterdam'
+      name: 'Dusseldorf'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Prague.',
     goods: [
@@ -139,11 +140,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 52.3809553943508,
-        longitude: 4.939309666406198,
-        zoom: 10
+        latitude: 53.5753,
+        longitude: 10.0153,
+        zoom: 11,
       },
-      name: 'Amsterdam'
+      name: 'Hamburg'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Italy.',
     goods: [
@@ -178,11 +179,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 48.8534,
-        longitude: 2.3488,
-        zoom: 10
+        latitude: 50.85043497487292,
+        longitude: 4.354815361863751,
+        zoom: 11,
       },
-      name: 'Paris'
+      name: 'Brussels'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Paris.',
     goods: [
@@ -205,15 +206,15 @@ const rentalOffersOption: Offer[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 52.3609553943508,
-      longitude: 4.85309666406198,
+      latitude: 50.5209553943508,
+      longitude: 4.72309666406198,
       zoom: 8
     },
     maxAdults: 4,
     previewImage: 'img/apartment-02.jpg',
     price: 90,
     rating: 4.8,
-    title: 'Beautiful & luxurious studio at great location2',
+    title: 'Beautiful & luxurious studio at great location5',
     type: 'apartment'
   },
   {

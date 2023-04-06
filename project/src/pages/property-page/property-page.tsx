@@ -1,4 +1,3 @@
-import { City, Offer } from '../../types/offer';
 import ReviewForm from '../../components/review-form/review-form';
 import { AboutHost } from '../../components/about-host/about-host';
 import { Navigate, useParams } from 'react-router-dom';
@@ -6,17 +5,17 @@ import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import { ListOffers } from '../../components/list-offers/list-offers';
 import { Review } from '../../types/review';
+import { useAppSelector } from '../../hooks';
 
 
 type PropertyPageProps = {
-  rentalOffersOption: Offer[];
-  city: City;
   reviews: Review[];
 }
 
-function PropertyPage({rentalOffersOption, city, reviews}: PropertyPageProps): JSX.Element {
+function PropertyPage({reviews}: PropertyPageProps): JSX.Element {
   const {id} = useParams() as {id: string};
-  const offer = rentalOffersOption.find((o) => o.id === parseInt(id, 10));
+  const offers = useAppSelector((state) => state.filteredOffers);
+  const offer = offers.find((o) => o.id === parseInt(id, 10));
 
   if (!offer) {
     return <Navigate to="*"/>;
@@ -132,12 +131,12 @@ function PropertyPage({rentalOffersOption, city, reviews}: PropertyPageProps): J
             </section>
           </div>
         </div>
-        <Map className="property__map" rentalOffersOption={rentalOffersOption} city={city}/>
+        <Map className="property__map"/>
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <ListOffers className={'near-places__list'} rentalOffersOption={rentalOffersOption} cardClassName={'near-places'} />
+          <ListOffers className={'near-places__list'} cardClassName={'near-places'} />
         </section>
       </div>
     </main>
