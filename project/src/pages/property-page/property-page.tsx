@@ -1,4 +1,4 @@
-import { City, Offer } from '../../types/offer';
+import { Offer } from '../../types/offer';
 import ReviewForm from '../../components/review-form/review-form';
 import { AboutHost } from '../../components/about-host/about-host';
 import { Navigate, useParams } from 'react-router-dom';
@@ -10,11 +10,10 @@ import { Review } from '../../types/review';
 
 type PropertyPageProps = {
   rentalOffersOption: Offer[];
-  city: City;
   reviews: Review[];
 }
 
-function PropertyPage({rentalOffersOption, city, reviews}: PropertyPageProps): JSX.Element {
+function PropertyPage({rentalOffersOption, reviews}: PropertyPageProps): JSX.Element {
   const {id} = useParams() as {id: string};
   const offer = rentalOffersOption.find((o) => o.id === parseInt(id, 10));
 
@@ -132,7 +131,7 @@ function PropertyPage({rentalOffersOption, city, reviews}: PropertyPageProps): J
             </section>
           </div>
         </div>
-        <Map className="property__map" rentalOffersOption={rentalOffersOption} city={city}/>
+        <Map className="property__map" rentalOffersOption={rentalOffersOption} />
       </section>
       <div className="container">
         <section className="near-places places">

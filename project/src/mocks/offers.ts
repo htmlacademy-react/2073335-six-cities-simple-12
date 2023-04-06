@@ -5,11 +5,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 4,
     city: {
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
+        latitude: 48.85341,
+        longitude: 2.34880,
+        zoom: 11
       },
-      name: 'Amsterdam'
+      name: 'Paris'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: [
@@ -53,11 +53,12 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 52.3609553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
+
+        latitude: 52.374,
+        longitude: 4.88969,
+        zoom: 11,
       },
-      name: 'Amsterdam'
+      name: 'Paris'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Spain.',
     goods: [
@@ -96,11 +97,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 52.3909553943508,
-        longitude: 4.929309666406198,
-        zoom: 10
+        latitude: 51.2217,
+        longitude: 6.77616,
+        zoom: 11,
       },
-      name: 'Amsterdam'
+      name: 'Dusseldorf'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Prague.',
     goods: [
@@ -139,11 +140,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 52.3809553943508,
-        longitude: 4.939309666406198,
-        zoom: 10
+        latitude: 53.5753,
+        longitude: 10.0153,
+        zoom: 11,
       },
-      name: 'Amsterdam'
+      name: 'Hamburg'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Italy.',
     goods: [
@@ -178,11 +179,11 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 48.8534,
-        longitude: 2.3488,
-        zoom: 10
+        latitude: 50.8504,
+        longitude: 4.34878,
+        zoom: 11,
       },
-      name: 'Paris'
+      name: 'Brussels'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Paris.',
     goods: [

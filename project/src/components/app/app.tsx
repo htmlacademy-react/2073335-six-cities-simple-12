@@ -3,24 +3,25 @@ import ErrorPage from '../../pages/error-page/error-page';
 import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
-import { City, Offer } from '../../types/offer';
+import { Offer } from '../../types/offer';
 import { Review } from '../../types/review';
 import { AppRoute } from '../const';
-
+import { useAppSelector } from '../../hooks';
 
 type AppScreenProps = {
   rentalOffersOption: Offer[];
   reviews: Review[];
-  city: City;
 }
 
-function App({rentalOffersOption, reviews, city}: AppScreenProps): JSX.Element {
+function App({rentalOffersOption, reviews}: AppScreenProps): JSX.Element {
+  const currentCity = useAppSelector((state) => state.defaultCity);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={ <MainPage rentalOffersOption={rentalOffersOption} city={city}/>}
+          element={ <MainPage rentalOffersOption={rentalOffersOption} selectedCity={currentCity} />}
         />
         <Route
           path={AppRoute.Login}
@@ -31,7 +32,6 @@ function App({rentalOffersOption, reviews, city}: AppScreenProps): JSX.Element {
           element={
             <PropertyPage
               rentalOffersOption={rentalOffersOption}
-              city={city}
               reviews={reviews}
             />
           }
