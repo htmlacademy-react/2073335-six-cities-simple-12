@@ -5,9 +5,9 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 4,
     city: {
       location: {
-        latitude: 48.85341,
-        longitude: 2.34880,
-        zoom: 11
+        latitude: 48.862877,
+        longitude: 2.335397,
+        zoom: 8
       },
       name: 'Paris'
     },
@@ -37,9 +37,9 @@ const rentalOffersOption: Offer[] = [
     isFavorite: true,
     isPremium: true,
     location: {
-      latitude: 52.3909553943508,
-      longitude: 4.85309666406198,
-      zoom: 8
+      latitude: 48.85341,
+      longitude: 2.34880,
+      zoom: 11,
     },
     maxAdults: 4,
     previewImage: 'img/apartment-01.jpg',
@@ -58,7 +58,7 @@ const rentalOffersOption: Offer[] = [
         longitude: 4.88969,
         zoom: 11,
       },
-      name: 'Paris'
+      name: 'Amsterdam'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Spain.',
     goods: [

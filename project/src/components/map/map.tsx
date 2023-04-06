@@ -1,14 +1,12 @@
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import { useRef, useEffect} from 'react';
-import { Offer } from '../../types/offer';
 import { Icon, Marker} from 'leaflet';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useAppSelector } from '../../hooks';
 
 type MapProps = {
-rentalOffersOption: Offer[];
 className: string;
 }
 
@@ -24,10 +22,10 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({rentalOffersOption, className}: MapProps): JSX.Element {
+function Map({className}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const offers = useAppSelector((state) => state.filteredOffers);
-  const cityLocation = rentalOffersOption[0].city.location;
+  const cityLocation = offers[0].city.location;
   const map = useMap(mapRef, cityLocation);
   const selectedOffers = useAppSelector((state) => state.selectedOfferId);
 
@@ -39,19 +37,20 @@ function Map({rentalOffersOption, className}: MapProps): JSX.Element {
     }
   }, [map, cityLocation]);
 
+
   useEffect(() => {
     if (map) {
       const markerGroup = leaflet.layerGroup().addTo(map);
 
-      rentalOffersOption.forEach(({id, city}) => {
+      offers.forEach((offer) => {
         const marker = new Marker({
-          lat: city.location.latitude,
-          lng: city.location.longitude,
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
         });
 
         marker
           .setIcon(
-            selectedOffers !== null && id === selectedOffers
+            selectedOffers !== null && offer.id === selectedOffers
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -60,7 +59,7 @@ function Map({rentalOffersOption, className}: MapProps): JSX.Element {
 
 
     }
-  }, [map, offers, selectedOffers, cityLocation, rentalOffersOption]);
+  }, [map, offers, selectedOffers, cityLocation]);
 
 
   return (

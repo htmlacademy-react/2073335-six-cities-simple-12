@@ -3,13 +3,10 @@ import { setCity } from '../../store/action';
 
 type LocationsItemProps = {
     city: string;
-    //onLocationItemClick: (city: string) => void;
-   // isActive: boolean;
 }
 
 function LocationsItem({city}: LocationsItemProps): JSX.Element {
   const dispatch = useAppDispatch();
-  //const onLocationChange = (city: string) => dispatch(setCity(city));
   const currentLocation = useAppSelector((state) => state.defaultCity);
 
 

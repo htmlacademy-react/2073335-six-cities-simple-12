@@ -1,11 +1,6 @@
 import { CITY_NAMES } from '../components/const';
 import LocationsItem from '../components/locations-item/locations-item';
 
-//type LocationsListProps = {
-//onLocationChange: (city: string) => void;
-//currentCity: string;
-//}
-
 function LocationsList(): JSX.Element {
 
   return (

@@ -2,10 +2,11 @@ import { createReducer } from '@reduxjs/toolkit';
 import { rentalOffersOption } from '../mocks/offers';
 import { selectOffer, setCity, updateOffers } from './action';
 import { CITY_NAMES } from '../components/const';
+//import { Offer } from '../types/Offer';
 
 type InitialState = {
   defaultCity: string;
-  filteredOffers: object;
+  filteredOffers: typeof rentalOffersOption;
   selectedOfferId: number | null;
 };
 

@@ -4,15 +4,13 @@ import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks';
 import LocationsList from '../../locations-list/locations-list';
 import { CITIES } from '../../mocks/city';
-import {Offer } from '../../types/offer';
 
 
 type MainPageProps = {
-    rentalOffersOption: Offer[];
-    selectedCity: string;
+   selectedCity: string;
   }
 
-function MainPage({rentalOffersOption, selectedCity}: MainPageProps): JSX.Element {
+function MainPage({selectedCity}: MainPageProps): JSX.Element {
   const currentCity = CITIES.find((cities) => cities.name === selectedCity);
   const offers = useAppSelector((state) => state.filteredOffers);
 
@@ -45,10 +43,10 @@ function MainPage({rentalOffersOption, selectedCity}: MainPageProps): JSX.Elemen
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <ListOffers className={'cities__places-list tabs__content'} cardClassName={'cities'} rentalOffersOption={rentalOffersOption} />
+              <ListOffers className={'cities__places-list tabs__content'} cardClassName={'cities'}/>
             </section>
             <div className="cities__right-section">
-              <Map rentalOffersOption={rentalOffersOption} className={'cities__map'}/>
+              <Map className={'cities__map'}/>
             </div>
           </div>
         </div>
