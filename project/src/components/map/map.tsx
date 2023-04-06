@@ -4,7 +4,7 @@ import { useRef, useEffect} from 'react';
 import { Icon, Marker} from 'leaflet';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useAppSelector } from '../../hooks';
+import {useAppSelector } from '../../hooks';
 
 type MapProps = {
 className: string;
@@ -41,7 +41,7 @@ function Map({className}: MapProps): JSX.Element {
   useEffect(() => {
     if (map) {
       const markerGroup = leaflet.layerGroup().addTo(map);
-
+      markerGroup.clearLayers();
       offers.forEach((offer) => {
         const marker = new Marker({
           lat: offer.location.latitude,
@@ -50,13 +50,15 @@ function Map({className}: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            selectedOffers !== null && offer.id === selectedOffers
+            offer.id !== selectedOffers
               ? currentCustomIcon
               : defaultCustomIcon
           )
           .addTo(markerGroup);
       });
-
+      return () => {
+        map.removeLayer(markerGroup);
+      };
 
     }
   }, [map, offers, selectedOffers, cityLocation]);

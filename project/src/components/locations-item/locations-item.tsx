@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setCity } from '../../store/action';
+import {setCity, updateOffers } from '../../store/action';
 
 type LocationsItemProps = {
     city: string;
@@ -12,7 +12,7 @@ function LocationsItem({city}: LocationsItemProps): JSX.Element {
 
   return (
     <li className="locations__item">
-      <a className={`locations__item-link tabs__item ${city === currentLocation ? 'tabs__item--active' : ''}`} href="/#" onClick={(evt) =>{ evt.preventDefault(); dispatch(setCity(city));}}>
+      <a className={`locations__item-link tabs__item ${city === currentLocation ? 'tabs__item--active' : ''}`} href="/#" onClick={(evt) =>{ evt.preventDefault(); dispatch(setCity(city)); dispatch(updateOffers());}}>
         <span>{city}</span>
       </a>
     </li>

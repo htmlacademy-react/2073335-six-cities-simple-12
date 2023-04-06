@@ -179,8 +179,8 @@ const rentalOffersOption: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 50.8504,
-        longitude: 4.34878,
+        latitude: 50.85043497487292,
+        longitude: 4.354815361863751,
         zoom: 11,
       },
       name: 'Brussels'
@@ -206,15 +206,15 @@ const rentalOffersOption: Offer[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 52.3609553943508,
-      longitude: 4.85309666406198,
+      latitude: 50.5209553943508,
+      longitude: 4.72309666406198,
       zoom: 8
     },
     maxAdults: 4,
     previewImage: 'img/apartment-02.jpg',
     price: 90,
     rating: 4.8,
-    title: 'Beautiful & luxurious studio at great location2',
+    title: 'Beautiful & luxurious studio at great location5',
     type: 'apartment'
   },
   {
