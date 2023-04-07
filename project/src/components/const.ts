@@ -22,4 +22,10 @@ export const CITY_NAMES = [
   'Dusseldorf'
 ];
 
+export const OfferSort = [
+  'Popular',
+  'Price: low to high',
+  'Price: high to low',
+  'Top rated first',
+];
 

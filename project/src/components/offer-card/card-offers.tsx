@@ -2,6 +2,7 @@ import { Offer } from '../../types/offer';
 import { Link, useNavigate } from 'react-router-dom';
 import { MouseEventHandler } from 'react';
 
+
 type OfferCardProps = {
   offer: Offer;
   setActiveCard: (id: number) => void;

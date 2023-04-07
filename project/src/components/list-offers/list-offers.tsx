@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../hooks';
+import {useAppSelector } from '../../hooks';
 import CardOffers from '../offer-card/card-offers';
 import {useState} from 'react';
 

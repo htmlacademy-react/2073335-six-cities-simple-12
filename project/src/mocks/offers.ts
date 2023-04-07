@@ -58,7 +58,7 @@ const rentalOffersOption: Offer[] = [
         longitude: 4.88969,
         zoom: 11,
       },
-      name: 'Amsterdam'
+      name: 'Paris'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Spain.',
     goods: [
