@@ -1,7 +1,8 @@
 import { Offer } from '../../types/offer';
 import { Link, useNavigate } from 'react-router-dom';
 import { MouseEventHandler } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { selectOffer } from '../../store/action';
 
 type OfferCardProps = {
   offer: Offer;
@@ -9,7 +10,8 @@ type OfferCardProps = {
   cardClassName: string;
 }
 
-function CardOffers({offer: {isPremium, type, price, title, id, images}, cardClassName, setActiveCard}: OfferCardProps): JSX.Element {
+function OfferCard({offer: {isPremium, type, price, title, id, images}, cardClassName, setActiveCard}: OfferCardProps): JSX.Element {
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const handleNavigateClick: MouseEventHandler<HTMLAnchorElement> = (evt) => {
@@ -19,7 +21,7 @@ function CardOffers({offer: {isPremium, type, price, title, id, images}, cardCla
 
   return (
     <Link to="#" onClick={handleNavigateClick}>
-      <article className={`${cardClassName}__card place-card`} onMouseEnter={() => setActiveCard(id)} onMouseLeave={() => setActiveCard(-1)}>
+      <article className={`${cardClassName}__card place-card`} onMouseEnter={() => dispatch(selectOffer(id))} onMouseLeave={() => dispatch(selectOffer(null))}>
         { isPremium ?
           <div className="place-card__mark">
             <span>Premium</span>
@@ -54,4 +56,4 @@ function CardOffers({offer: {isPremium, type, price, title, id, images}, cardCla
   );
 }
 
-export default CardOffers;
+export default OfferCard;

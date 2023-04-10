@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { SortingType } from '../../store/action';
-import { OfferSort } from '../const';
+import { SortOffers } from '../../store/action';
+import { OFFERS_SORT_OPTIONS } from '../const';
 
 
 function SortingOption(): JSX.Element {
@@ -14,7 +14,7 @@ function SortingOption(): JSX.Element {
   }
 
   function handleChooseSort(item: string) {
-    dispatch(SortingType(item));
+    dispatch(SortOffers(item));
     setIsOpenSortList(false);
   }
 
@@ -29,7 +29,7 @@ function SortingOption(): JSX.Element {
       </span>
       {isOpenSortList && (
         <ul className='places__options places__options--custom places__options--opened'>
-          {OfferSort.map((item) => <li className='places__option' onClick={() => handleChooseSort(item)} tabIndex={0} key={item}>{item}</li>)}
+          {OFFERS_SORT_OPTIONS.map((item) => <li className='places__option' onClick={() => handleChooseSort(item)} tabIndex={0} key={item}>{item}</li>)}
         </ul>
       )}
     </form>

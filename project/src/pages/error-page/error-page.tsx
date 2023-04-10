@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom';
+import { AppRoute } from '../../components/const';
 
 function ErrorPage(): JSX.Element {
   return (
     <div>
       <h1>Ошибка 404. Страница не существует.</h1>
-      <Link to="/">Вернуться на главную</Link>
+      <Link to={AppRoute.Main}>Вернуться на главную</Link>
     </div>
   );
 }

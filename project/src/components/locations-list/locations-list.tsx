@@ -1,5 +1,5 @@
-import { CITY_NAMES } from '../components/const';
-import LocationsItem from '../components/locations-item/locations-item';
+import { CITY_NAMES } from '../const';
+import LocationsItem from '../locations-item/locations-item';
 
 function LocationsList(): JSX.Element {
 

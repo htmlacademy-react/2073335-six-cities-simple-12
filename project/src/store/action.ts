@@ -16,4 +16,4 @@ export const selectOffer = createAction(
   (offerId: number | null) => ({payload: offerId})
 );
 
-export const SortingType = createAction<string>(Action.SORT_TYPE);
+export const SortOffers = createAction<string>(Action.SORT_TYPE);

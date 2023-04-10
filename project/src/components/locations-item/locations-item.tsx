@@ -7,7 +7,7 @@ type LocationsItemProps = {
 
 function LocationsItem({city}: LocationsItemProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const currentLocation = useAppSelector((state) => state.defaultCity);
+  const currentLocation = useAppSelector((state) => state.selectedCity);
 
 
   return (
