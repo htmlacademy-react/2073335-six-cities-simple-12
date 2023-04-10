@@ -4,22 +4,20 @@ import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
 import { Review } from '../../types/review';
-import { AppRoute } from '../const';
-import { useAppSelector } from '../../hooks';
+import { AppRoute } from '../../constants/const';
 
 type AppScreenProps = {
   reviews: Review[];
 }
 
 function App({reviews}: AppScreenProps): JSX.Element {
-  const currentCity = useAppSelector((state) => state.defaultCity);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={ <MainPage selectedCity={currentCity} />}
+          element={ <MainPage />}
         />
         <Route
           path={AppRoute.Login}

@@ -1,4 +1,3 @@
-
 export enum AppRoute {
     Login = '/login',
     Main = '/',
@@ -22,4 +21,9 @@ export const CITY_NAMES = [
   'Dusseldorf'
 ];
 
-
+export const OFFERS_SORT_OPTIONS = [
+  'Popular',
+  'Price: low to high',
+  'Price: high to low',
+  'Top rated first',
+];

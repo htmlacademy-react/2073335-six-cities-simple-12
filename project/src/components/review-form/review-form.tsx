@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { RATING_GRADE } from '../const';
+import { RATING_GRADE } from '../../constants/const';
 
 function ReviewForm(): JSX.Element {
   const [formData, setFormData] = useState({

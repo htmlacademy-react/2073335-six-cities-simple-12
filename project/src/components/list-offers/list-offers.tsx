@@ -1,5 +1,6 @@
-import { useAppSelector } from '../../hooks';
-import CardOffers from '../offer-card/card-offers';
+import {useAppSelector } from '../../hooks';
+import { sortCards } from '../../utils';
+import CardOffers from '../offer-card/offer-card';
 import {useState} from 'react';
 
 type ListOffersProps = {
@@ -7,16 +8,16 @@ type ListOffersProps = {
     className: string;
 }
 
-
 function ListOffers({cardClassName, className}: ListOffersProps): JSX.Element {
   const offers = useAppSelector((state) => state.filteredOffers);
+  const selectedSort = useAppSelector((state) => state.sortType);
+  const cardsSort = sortCards(offers, selectedSort);
 
   const [, setActiveCard] = useState(-1);
   return (
     <div className={`${className } places__list`}>
-      {offers.map((offer) => (<CardOffers cardClassName={cardClassName} key={offer.id} offer={offer} setActiveCard={setActiveCard} />))}
+      {cardsSort.map((offer) => (<CardOffers cardClassName={cardClassName} key={offer.id} offer={offer} setActiveCard={setActiveCard} />))}
     </div>
   );
 }
-
 export {ListOffers};

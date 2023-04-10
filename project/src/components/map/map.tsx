@@ -50,7 +50,7 @@ function Map({className}: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            offer.id !== selectedOffers
+            offer.id === selectedOffers
               ? currentCustomIcon
               : defaultCustomIcon
           )

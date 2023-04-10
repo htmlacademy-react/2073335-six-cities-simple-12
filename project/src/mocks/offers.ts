@@ -54,11 +54,11 @@ const rentalOffersOption: Offer[] = [
     city: {
       location: {
 
-        latitude: 52.374,
-        longitude: 4.88969,
-        zoom: 11,
+        latitude: 48.862877,
+        longitude: 2.335397,
+        zoom: 8
       },
-      name: 'Amsterdam'
+      name: 'Paris'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Spain.',
     goods: [
@@ -81,9 +81,9 @@ const rentalOffersOption: Offer[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 52.3609553943508,
-      longitude: 4.85309666406198,
-      zoom: 8
+      latitude: 48.83341,
+      longitude: 2.34880,
+      zoom: 11,
     },
     maxAdults: 4,
     previewImage: 'img/apartment-02.jpg',
@@ -92,50 +92,6 @@ const rentalOffersOption: Offer[] = [
     title: 'Beautiful & luxurious studio at great location2',
     type: 'apartment'
   },
-
-  {
-    bedrooms: 3,
-    city: {
-      location: {
-        latitude: 51.2217,
-        longitude: 6.77616,
-        zoom: 11,
-      },
-      name: 'Dusseldorf'
-    },
-    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Prague.',
-    goods: [
-      'Heating',
-      'Washing machine',
-      'Baby seat',
-      'Dishwasher',
-      'Cabel TV',
-    ],
-    host: {
-      avatarUrl: 'img/3.png',
-      id: 3,
-      isPro: true,
-      name: 'Angelina'
-    },
-    id: 3,
-    images: [
-      'img/apartment-03.jpg',
-    ],
-    isFavorite: false,
-    isPremium: false,
-    location: {
-      latitude: 52.3909553943508,
-      longitude: 4.929309666406198,
-      zoom: 8
-    },
-    maxAdults: 4,
-    previewImage: 'img/apartment-03.jpg',
-    price: 80,
-    rating: 4.3,
-    title: 'Beautiful & luxurious studio at great location3',
-    type: 'house'
-  },
-
   {
     bedrooms: 2,
     city: {
