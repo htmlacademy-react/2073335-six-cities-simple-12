@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { SortOffers } from '../../store/action';
-import { OFFERS_SORT_OPTIONS } from '../const';
-
+import { setSortType } from '../../store/action';
+import { OFFERS_SORT_OPTIONS } from '../../constants/const';
 
 function SortingOption(): JSX.Element {
   const activeSortType = useAppSelector((state) => state.sortType);
@@ -14,7 +13,7 @@ function SortingOption(): JSX.Element {
   }
 
   function handleChooseSort(item: string) {
-    dispatch(SortOffers(item));
+    dispatch(setSortType(item));
     setIsOpenSortList(false);
   }
 

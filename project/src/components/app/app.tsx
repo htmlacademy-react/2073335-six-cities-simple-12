@@ -4,7 +4,7 @@ import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
 import { Review } from '../../types/review';
-import { AppRoute } from '../const';
+import { AppRoute } from '../../constants/const';
 
 type AppScreenProps = {
   reviews: Review[];

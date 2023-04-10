@@ -1,4 +1,4 @@
-import { CITY_NAMES } from '../const';
+import { CITY_NAMES } from '../../constants/const';
 import LocationsItem from '../locations-item/locations-item';
 
 function LocationsList(): JSX.Element {

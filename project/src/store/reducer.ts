@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { rentalOffersOption } from '../mocks/offers';
-import { SortOffers, selectOffer, setCity, updateOffers } from './action';
-import { CITY_NAMES, OFFERS_SORT_OPTIONS } from '../components/const';
+import { setSortType, selectOffer, setCity, updateOffers } from './action';
+import { CITY_NAMES, OFFERS_SORT_OPTIONS } from '../constants/const';
 
 type InitialState = {
   selectedCity: string;
@@ -28,7 +28,7 @@ const reducer = createReducer(initialState, (builder) => {
   builder.addCase(selectOffer, (state, action) => {
     state.selectedOfferId = action.payload;
   });
-  builder.addCase(SortOffers, (state, action) => {
+  builder.addCase(setSortType, (state, action) => {
     state.sortType = action.payload;
   });
 });
