@@ -35,9 +35,7 @@ const reducer = createReducer(initialState, (builder) => {
   });
 
   builder.addCase(updateOffers, (state, action) => {
-    const {checkCity} = action.payload;
-    state.offers = state.data.filter((offer) => offer.city.name === checkCity);
-    //state.filteredOffers = [].filter(({city}) => city === state.selectedCity);
+    state.filteredOffers = [].filter(({city}) => city === state.selectedCity);
   });
   builder.addCase(selectOffer, (state, action) => {
     state.selectedOfferId = action.payload;
@@ -53,7 +51,6 @@ const reducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(loadOffers, (state, action) => {
     state.offers = action.payload;
-    state.filteredOffers = action.payload;
   });
   builder.addCase(setError, (state, action) => {
     state.error = action.payload;

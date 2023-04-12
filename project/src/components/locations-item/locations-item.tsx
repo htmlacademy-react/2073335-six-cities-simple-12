@@ -8,7 +8,6 @@ function LocationsItem(): JSX.Element {
   const currentLocation = useAppSelector((state) => state.selectedCity);
   const cityNames = Object.values(CITY_NAMES);
   const offers = useAppSelector((state) => state.offers);
-  const filter = offers.filter(({city}) => city.name === currentLocation);
 
   return (
     <>
@@ -18,7 +17,7 @@ function LocationsItem(): JSX.Element {
             <Link
               className={`locations__item-link tabs__item ${cityName === currentLocation ? 'tabs__item--active' : ''} `}
               to="/"
-              onClick={() => { dispatch(setCity(cityName)); dispatch(loadOffers(filter));}}
+              onClick={() => { dispatch(setCity(cityName)); dispatch(loadOffers(offers));}}
             >
               <span>{cityName}</span>
             </Link>
