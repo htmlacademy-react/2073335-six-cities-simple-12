@@ -11,7 +11,10 @@ type ListOffersProps = {
 function ListOffers({cardClassName, className}: ListOffersProps): JSX.Element {
   const offers = useAppSelector((state) => state.offers);
   const selectedSort = useAppSelector((state) => state.sortType);
-  const cardsSort = sortCards(offers, selectedSort);
+  const currentLocation = useAppSelector((state) => state.selectedCity);
+  const filteredOffers = offers.filter((offer) => offer.city.name === currentLocation);
+  const cardsSort = sortCards(filteredOffers, selectedSort);
+
 
   const [, setActiveCard] = useState(-1);
   return (

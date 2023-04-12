@@ -9,6 +9,8 @@ import LocationsList from '../../components/locations-list/locations-list';
 function MainPage(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.selectedCity);
   const offers = useAppSelector((state) => state.offers);
+  const filteredOffers = offers.filter((offer) => offer.city.name === selectedCity);
+
 
   return (
     <><HeaderElement />
@@ -23,12 +25,12 @@ function MainPage(): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in {selectedCity}</b>
+              <b className="places__found">{filteredOffers.length} places to stay in {selectedCity}</b>
               <SortingOption />
               <ListOffers className={'cities__places-list tabs__content'} cardClassName={'cities'}/>
             </section>
             <div className="cities__right-section">
-              <Map className={'cities__map'}/>
+              <Map className={'cities__map'} style={{ height: '770px' }}/>
             </div>
           </div>
         </div>

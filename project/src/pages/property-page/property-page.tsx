@@ -126,7 +126,7 @@ function PropertyPage(): JSX.Element {
             </section>
           </div>
         </div>
-        <Map className="property__map"/>
+        <Map className="property__map" style={{ height: '770px' }}/>
       </section>
       <div className="container">
         <section className="near-places places">

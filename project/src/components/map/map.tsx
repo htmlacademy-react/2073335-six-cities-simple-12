@@ -6,8 +6,13 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {useAppSelector } from '../../hooks';
 
+type StyleMap = {
+  height: string;
+}
+
 type MapProps = {
 className: string;
+style: StyleMap;
 }
 
 const defaultCustomIcon = new Icon({
@@ -22,12 +27,16 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({className}: MapProps): JSX.Element {
+
+function Map({className, style}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const offers = useAppSelector((state) => state.offers);
-  const cityLocation = offers[0].city.location;
-  const map = useMap(mapRef, cityLocation);
+  const currentLocation = useAppSelector((state) => state.selectedCity);
   const selectedOffers = useAppSelector((state) => state.selectedOfferId);
+  const filteredOffers = offers.filter((offer) => offer.city.name === currentLocation);
+
+  const cityLocation = filteredOffers[0].city.location;
+  const map = useMap(mapRef, cityLocation);
 
 
   useEffect(() => {
@@ -65,7 +74,7 @@ function Map({className}: MapProps): JSX.Element {
 
 
   return (
-    <section className={`${className } map`} ref={mapRef}></section>
+    <section className={`${className } map`} ref={mapRef} style={style}></section>
   );
 }
 
