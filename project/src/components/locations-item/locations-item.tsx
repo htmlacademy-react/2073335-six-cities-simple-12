@@ -1,21 +1,31 @@
+import { Link } from 'react-router-dom';
+import { CITY_NAMES } from '../../constants/const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import {setCity, updateOffers } from '../../store/action';
+import {loadOffers, setCity } from '../../store/action';
 
-type LocationsItemProps = {
-    city: string;
-}
-
-function LocationsItem({city}: LocationsItemProps): JSX.Element {
+function LocationsItem(): JSX.Element {
   const dispatch = useAppDispatch();
   const currentLocation = useAppSelector((state) => state.selectedCity);
-
+  const cityNames = Object.values(CITY_NAMES);
+  const offers = useAppSelector((state) => state.offers);
+  const filter = offers.filter(({city}) => city.name === currentLocation);
 
   return (
-    <li className="locations__item">
-      <a className={`locations__item-link tabs__item ${city === currentLocation ? 'tabs__item--active' : ''}`} href="/#" onClick={(evt) =>{ evt.preventDefault(); dispatch(setCity(city)); dispatch(updateOffers());}}>
-        <span>{city}</span>
-      </a>
-    </li>
+    <>
+      {
+        cityNames.map((cityName) => (
+          <li className="locations__item" key={cityName}>
+            <Link
+              className={`locations__item-link tabs__item ${cityName === currentLocation ? 'tabs__item--active' : ''} `}
+              to="/"
+              onClick={() => { dispatch(setCity(cityName)); dispatch(loadOffers(filter));}}
+            >
+              <span>{cityName}</span>
+            </Link>
+          </li>
+        ))
+      }
+    </>
   );
 }
 export default LocationsItem;

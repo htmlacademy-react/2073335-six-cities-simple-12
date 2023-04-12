@@ -1,20 +1,32 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { rentalOffersOption } from '../mocks/offers';
-import { setSortType, selectOffer, setCity, updateOffers } from './action';
-import { CITY_NAMES, OFFERS_SORT_OPTIONS } from '../constants/const';
+import { setSortType, selectOffer, setCity, updateOffers, setOffersDataLoadingStatus, requireAuthorization, loadOffers, setError } from './action';
+import { AuthorizationStatus, CITY_NAMES, OFFERS_SORT_OPTIONS } from '../constants/const';
+import { Offer } from '../types/offer';
+
 
 type InitialState = {
   selectedCity: string;
-  filteredOffers: typeof rentalOffersOption;
+  filteredOffers: Offer[];
   selectedOfferId: number | null;
   sortType: string;
+  authorizationStatus: AuthorizationStatus;
+  isOffersDataLoading: boolean;
+  error: string | null;
+  offers: Offer[];
+  data: Offer[];
 };
 
 const initialState: InitialState = {
   selectedOfferId: null,
   selectedCity: CITY_NAMES[0],
-  filteredOffers: rentalOffersOption.filter(({city}) => city.name === CITY_NAMES[0]),
+  filteredOffers: [].filter(({city}) => city === CITY_NAMES[0]),
   sortType: OFFERS_SORT_OPTIONS[0],
+  authorizationStatus: AuthorizationStatus.Unknown,
+  isOffersDataLoading: false,
+  error: null,
+  offers: [],
+  data: [],
+
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -22,8 +34,10 @@ const reducer = createReducer(initialState, (builder) => {
     state.selectedCity = action.payload;
   });
 
-  builder.addCase(updateOffers, (state) => {
-    state.filteredOffers = rentalOffersOption.filter(({city}) => city.name === state.selectedCity);
+  builder.addCase(updateOffers, (state, action) => {
+    const {checkCity} = action.payload;
+    state.offers = state.data.filter((offer) => offer.city.name === checkCity);
+    //state.filteredOffers = [].filter(({city}) => city === state.selectedCity);
   });
   builder.addCase(selectOffer, (state, action) => {
     state.selectedOfferId = action.payload;
@@ -31,6 +45,20 @@ const reducer = createReducer(initialState, (builder) => {
   builder.addCase(setSortType, (state, action) => {
     state.sortType = action.payload;
   });
+  builder.addCase(setOffersDataLoadingStatus, (state, action) => {
+    state.isOffersDataLoading = action.payload;
+  });
+  builder.addCase(requireAuthorization, (state, action) => {
+    state.authorizationStatus = action.payload;
+  });
+  builder.addCase(loadOffers, (state, action) => {
+    state.offers = action.payload;
+    state.filteredOffers = action.payload;
+  });
+  builder.addCase(setError, (state, action) => {
+    state.error = action.payload;
+  });
+
 });
 
 export {reducer};

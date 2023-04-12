@@ -4,15 +4,10 @@ import { Navigate, useParams } from 'react-router-dom';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import { ListOffers } from '../../components/list-offers/list-offers';
-import { Review } from '../../types/review';
 import { useAppSelector } from '../../hooks';
 
 
-type PropertyPageProps = {
-  reviews: Review[];
-}
-
-function PropertyPage({reviews}: PropertyPageProps): JSX.Element {
+function PropertyPage(): JSX.Element {
   const {id} = useParams() as {id: string};
   const offers = useAppSelector((state) => state.filteredOffers);
   const offer = offers.find((o) => o.id === parseInt(id, 10));
@@ -125,8 +120,8 @@ function PropertyPage({reviews}: PropertyPageProps): JSX.Element {
             </div>
             <AboutHost host={host} description={description} />
             <section className="property__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
-              <ReviewsList reviews={reviews} />
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{offers.length}</span></h2>
+              <ReviewsList />
               <ReviewForm />
             </section>
           </div>
