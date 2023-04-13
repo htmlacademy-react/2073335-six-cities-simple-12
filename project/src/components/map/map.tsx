@@ -6,8 +6,13 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {useAppSelector } from '../../hooks';
 
+type StyleMap = {
+  height: string;
+}
+
 type MapProps = {
 className: string;
+style: StyleMap;
 }
 
 const defaultCustomIcon = new Icon({
@@ -22,12 +27,16 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({className}: MapProps): JSX.Element {
+
+function Map({className, style}: MapProps): JSX.Element {
   const mapRef = useRef(null);
-  const offers = useAppSelector((state) => state.filteredOffers);
-  const cityLocation = offers[0].city.location;
+  const offers = useAppSelector((state) => state.offers);
+  const filteredOffers = useAppSelector((state) => state.filteredOffers);
+  const selectedOfferId = useAppSelector((state) => state.selectedOfferId);
+
+
+  const cityLocation = filteredOffers[0].city.location;
   const map = useMap(mapRef, cityLocation);
-  const selectedOffers = useAppSelector((state) => state.selectedOfferId);
 
 
   useEffect(() => {
@@ -50,7 +59,7 @@ function Map({className}: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            offer.id === selectedOffers
+            offer.id === selectedOfferId
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -61,11 +70,11 @@ function Map({className}: MapProps): JSX.Element {
       };
 
     }
-  }, [map, offers, selectedOffers, cityLocation]);
+  }, [map, offers, selectedOfferId, cityLocation]);
 
 
   return (
-    <section className={`${className } map`} ref={mapRef}></section>
+    <section className={`${className } map`} ref={mapRef} style={style}></section>
   );
 }
 

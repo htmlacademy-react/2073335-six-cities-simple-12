@@ -3,14 +3,19 @@ import ErrorPage from '../../pages/error-page/error-page';
 import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
-import { Review } from '../../types/review';
-import { AppRoute } from '../../constants/const';
+import { AppRoute, AuthorizationStatus } from '../../constants/const';
+import { useAppSelector } from '../../hooks';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
-type AppScreenProps = {
-  reviews: Review[];
-}
+function App(): JSX.Element {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
 
-function App({reviews}: AppScreenProps): JSX.Element {
+  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <BrowserRouter>
@@ -26,9 +31,7 @@ function App({reviews}: AppScreenProps): JSX.Element {
         <Route
           path={AppRoute.Room}
           element={
-            <PropertyPage
-              reviews={reviews}
-            />
+            <PropertyPage />
           }
         />
         <Route
