@@ -8,8 +8,7 @@ import LocationsList from '../../components/locations-list/locations-list';
 
 function MainPage(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.selectedCity);
-  const offers = useAppSelector((state) => state.offers);
-  const filteredOffers = offers.filter((offer) => offer.city.name === selectedCity);
+  const filteredOffers = useAppSelector((state) => state.filteredOffers);
 
 
   return (
