@@ -32,7 +32,7 @@ function Map({className, style}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const offers = useAppSelector((state) => state.offers);
   const currentLocation = useAppSelector((state) => state.selectedCity);
-  const selectedOffers = useAppSelector((state) => state.selectedOfferId);
+  const selectedOfferId = useAppSelector((state) => state.selectedOfferId);
   const filteredOffers = offers.filter((offer) => offer.city.name === currentLocation);
 
   const cityLocation = filteredOffers[0].city.location;
@@ -59,7 +59,7 @@ function Map({className, style}: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            offer.id === selectedOffers
+            offer.id === selectedOfferId
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -70,7 +70,7 @@ function Map({className, style}: MapProps): JSX.Element {
       };
 
     }
-  }, [map, offers, selectedOffers, cityLocation]);
+  }, [map, offers, selectedOfferId, cityLocation]);
 
 
   return (

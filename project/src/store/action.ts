@@ -20,7 +20,7 @@ export const Action = {
 
 export const setCity = createAction<string>(Action.CHANGE_CITY);
 
-export const updateOffers = createAction<{checkCity:string}>(Action.UPDATE_OFFERS);
+export const updateOffers = createAction<string>(Action.UPDATE_OFFERS);
 
 export const selectOffer = createAction(
   Action.SELECT_OFFER,

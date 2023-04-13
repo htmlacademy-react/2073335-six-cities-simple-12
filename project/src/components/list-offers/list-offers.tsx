@@ -15,7 +15,6 @@ function ListOffers({cardClassName, className}: ListOffersProps): JSX.Element {
   const filteredOffers = offers.filter((offer) => offer.city.name === currentLocation);
   const cardsSort = sortCards(filteredOffers, selectedSort);
 
-
   const [, setActiveCard] = useState(-1);
   return (
     <div className={`${className } places__list`}>

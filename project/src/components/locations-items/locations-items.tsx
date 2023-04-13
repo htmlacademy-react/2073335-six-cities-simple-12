@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { CITY_NAMES } from '../../constants/const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import {loadOffers, setCity, updateOffers } from '../../store/action';
+import {updateOffers } from '../../store/action';
 
-function LocationsItem(): JSX.Element {
+function LocationsItems(): JSX.Element {
   const dispatch = useAppDispatch();
   const currentLocation = useAppSelector((state) => state.selectedCity);
   const cityNames = Object.values(CITY_NAMES);
-  const offers = useAppSelector((state) => state.offers);
 
 
   return (
@@ -18,7 +17,7 @@ function LocationsItem(): JSX.Element {
             <Link
               className={`locations__item-link tabs__item ${cityName === currentLocation ? 'tabs__item--active' : ''} `}
               to="/"
-              onClick={() => { dispatch(setCity(cityName)); dispatch(loadOffers(offers)); dispatch(updateOffers({checkCity: cityName}));}}
+              onClick={() => {dispatch(updateOffers(cityName));}}
             >
               <span>{cityName}</span>
             </Link>
@@ -28,5 +27,5 @@ function LocationsItem(): JSX.Element {
     </>
   );
 }
-export default LocationsItem;
+export default LocationsItems;
 

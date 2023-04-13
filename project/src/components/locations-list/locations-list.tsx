@@ -1,10 +1,10 @@
-import LocationsItem from '../locations-item/locations-item';
+import LocationsItems from '../locations-items/locations-items';
 
 function LocationsList(): JSX.Element {
 
   return (
     <ul className="locations__list tabs__list">
-      <LocationsItem />
+      <LocationsItems />
     </ul>
   );
 }
