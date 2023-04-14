@@ -6,7 +6,8 @@ import {requireAuthorization, setOffersDataLoadingStatus, loadOffers, redirectTo
 import {saveToken, dropToken} from '../services/token';
 import { AppRoute} from '../constants/const';
 import {store} from './';
-import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus, AuthData, UserData } from '../constants/const-api';
+import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus} from '../constants/const-api';
+import { AuthData, UserData } from '../types/data';
 
 
 export const clearErrorAction = createAsyncThunk(

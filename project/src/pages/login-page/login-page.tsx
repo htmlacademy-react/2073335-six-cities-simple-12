@@ -2,10 +2,10 @@ import { FormEvent, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { AuthData } from '../../constants/const-api';
 import { AuthorizationStatus } from '../../constants/const-api';
 import { AppRoute } from '../../constants/const';
 import HeaderElement from '../../components/header-element/header-element';
+import { AuthData } from '../../types/data';
 
 
 function LoginPage(): JSX.Element {

@@ -5,17 +5,6 @@ export enum APIRoute {
     Logout = '/logout',
   }
 
-export type AuthData = {
-    login: string;
-    password: string;
-  };
-
-export type UserData = {
-    id: number;
-    email: string;
-    token: string;
-  };
-
 export const BASE_URL = 'https://12.react.pages.academy/six-cities-simple';
 
 export const REQUEST_TIMEOUT = 5000;
