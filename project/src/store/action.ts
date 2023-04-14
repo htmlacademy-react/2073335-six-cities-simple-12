@@ -2,7 +2,8 @@ import { createAction } from '@reduxjs/toolkit';
 import { AppRoute } from '../constants/const';
 import { Offer } from '../types/offer';
 import { Review } from '../types/review';
-import { AuthorizationStatus, UserData } from '../constants/const-api';
+import { AuthorizationStatus } from '../constants/const-api';
+import { UserData } from '../types/data';
 
 export const Action = {
   CHANGE_CITY: 'CHANGE_CITY',

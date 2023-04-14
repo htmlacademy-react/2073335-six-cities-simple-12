@@ -2,7 +2,8 @@ import { createReducer } from '@reduxjs/toolkit';
 import { setSortType, selectOffer, updateOffers, setOffersDataLoadingStatus, requireAuthorization, loadOffers, setError, setUserData, updateLogin } from './action';
 import { CITY_NAMES, OFFERS_SORT_OPTIONS } from '../constants/const';
 import { Offer } from '../types/offer';
-import { AuthorizationStatus, UserData } from '../constants/const-api';
+import { AuthorizationStatus } from '../constants/const-api';
+import { UserData } from '../types/data';
 
 type InitialState = {
   selectedCity: string;
