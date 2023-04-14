@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setSortType, selectOffer, updateOffers, setOffersDataLoadingStatus, requireAuthorization, loadOffers, setError } from './action';
-import { AuthorizationStatus, CITY_NAMES, OFFERS_SORT_OPTIONS } from '../constants/const';
+import { setSortType, selectOffer, updateOffers, setOffersDataLoadingStatus, requireAuthorization, loadOffers, setError, setUserData, updateLogin } from './action';
+import { CITY_NAMES, OFFERS_SORT_OPTIONS } from '../constants/const';
 import { Offer } from '../types/offer';
-
+import { AuthorizationStatus, UserData } from '../constants/const-api';
 
 type InitialState = {
   selectedCity: string;
@@ -13,6 +13,8 @@ type InitialState = {
   isOffersDataLoading: boolean;
   error: string | null;
   offers: Offer[];
+  userData: UserData | null;
+  login: string | null;
 };
 
 const initialState: InitialState = {
@@ -24,6 +26,8 @@ const initialState: InitialState = {
   error: null,
   offers: [],
   filteredOffers: [],
+  userData: null,
+  login: null,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -40,17 +44,23 @@ const reducer = createReducer(initialState, (builder) => {
   builder.addCase(setOffersDataLoadingStatus, (state, action) => {
     state.isOffersDataLoading = action.payload;
   });
-  builder.addCase(requireAuthorization, (state, action) => {
-    state.authorizationStatus = action.payload;
-  });
   builder.addCase(loadOffers, (state, action) => {
     state.offers = action.payload;
     state.filteredOffers = state.offers.filter((offer) => offer.city.name === state.selectedCity);
-
   });
   builder.addCase(setError, (state, action) => {
     state.error = action.payload;
   });
+  builder.addCase(requireAuthorization, (state, action) => {
+    state.authorizationStatus = action.payload;
+  });
+  builder.addCase(setUserData, (state, action) => {
+    state.userData = action.payload;
+  });
+  builder.addCase(updateLogin, (state, action) => {
+    state.login = action.payload;
+  });
+
 
 });
 

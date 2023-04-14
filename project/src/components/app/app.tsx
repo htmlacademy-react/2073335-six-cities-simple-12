@@ -3,11 +3,12 @@ import ErrorPage from '../../pages/error-page/error-page';
 import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
-import { AppRoute, AuthorizationStatus } from '../../constants/const';
+import { AppRoute } from '../../constants/const';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
-
+import { AuthorizationStatus } from '../../constants/const-api';
 function App(): JSX.Element {
+
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
 

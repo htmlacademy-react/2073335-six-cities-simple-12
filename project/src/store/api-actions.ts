@@ -4,26 +4,10 @@ import {AppDispatch, State} from '../types/state';
 import {Offer} from '../types/offer';
 import {requireAuthorization, setOffersDataLoadingStatus, loadOffers, redirectToRoute, setError } from './action';
 import {saveToken, dropToken} from '../services/token';
-import { AppRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../constants/const';
+import { AppRoute} from '../constants/const';
 import {store} from './';
+import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus, AuthData, UserData } from '../constants/const-api';
 
-export enum APIRoute {
-    Offers = '/hotels',
-    Comments = '/comments',
-    Login = '/login',
-    Logout = '/logout',
-  }
-
-export type AuthData = {
-    login: string;
-    password: string;
-  };
-
-export type UserData = {
-    id: number;
-    email: string;
-    token: string;
-  };
 
 export const clearErrorAction = createAsyncThunk(
   'data/clearError',
