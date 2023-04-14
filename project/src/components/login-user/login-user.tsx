@@ -6,9 +6,9 @@ import { logoutAction } from '../../store/api-actions';
 
 function LoginUser(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const userData = useAppSelector((state) => state.userData);
 
   const dispatch = useAppDispatch();
-  const loginUser = useAppSelector((state) => state.userData);
   const handleSignOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     dispatch(logoutAction());
@@ -21,7 +21,7 @@ function LoginUser(): JSX.Element {
           <li className="header__nav-item user">
             <div className="header__nav-profile">
               <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-              <span className="header__user-name user__name">{loginUser?.email}</span>
+              <span className="header__user-name user__name">{userData?.email}</span>
             </div>
           </li>
           <li className="header__nav-item">
