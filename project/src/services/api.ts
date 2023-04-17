@@ -2,6 +2,7 @@ import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError} fro
 import {StatusCodes} from 'http-status-codes';
 import {getToken} from './token';
 import { processErrorHandle } from './proccess-error-handle';
+import { BACKEND_URL, REQUEST_TIMEOUT } from '../constants/const-api';
 
 const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.BAD_REQUEST]: true,
@@ -10,9 +11,6 @@ const StatusCodeMapping: Record<number, boolean> = {
 };
 
 const shouldDisplayError = (response: AxiosResponse) => !!StatusCodeMapping[response.status];
-
-const BACKEND_URL = 'https://12.react.pages.academy/six-cities-simple';
-const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({

@@ -15,33 +15,35 @@ function LoginUser(): JSX.Element {
   };
 
   return (
-    authorizationStatus === AuthorizationStatus.Auth ?
-      <nav className="header__nav">
-        <ul className="header__nav-list">
-          <li className="header__nav-item user">
-            <div className="header__nav-profile">
+    <nav className="header__nav">
+      <ul className="header__nav-list">
+        {authorizationStatus === AuthorizationStatus.Auth
+          ? (
+            <>
+              <li className="header__nav-item user">
+                <div className="header__nav-profile">
+                  <div className="header__avatar-wrapper user__avatar-wrapper">
+                    <img src={userData?.avatarUrl} alt={userData?.name} />
+                  </div>
+                  <span className="header__user-name user__name">{userData?.email}</span>
+                </div>
+              </li>
+              <li className="header__nav-item">
+                <Link className="header__nav-link" to={''} onClick={handleSignOut}>
+                  <span className="header__signout"> Sign out </span>
+                </Link>
+              </li>
+            </>
+          ) : (
+            <li className="header__nav-item user">
               <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-              <span className="header__user-name user__name">{userData?.email}</span>
-            </div>
-          </li>
-          <li className="header__nav-item">
-            <Link className="header__nav-link" to={''} onClick={handleSignOut}>
-              <span className="header__signout"> Sign out </span>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      :
-      <nav className="header__nav">
-        <ul className="header__nav-list">
-          <li className="header__nav-item user">
-            <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-            <Link to={AppRoute.Login}>
-              <span className="header__login">Sign in</span>
-            </Link>
-          </li>
-        </ul>
-      </nav>
+              <Link to={AppRoute.Login}>
+                <span className="header__login">Sign in</span>
+              </Link>
+            </li>
+          )}
+      </ul>
+    </nav>
   );
 }
 

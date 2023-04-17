@@ -19,7 +19,6 @@ export const Action = {
   LOAD_REVIEW: 'LOAD_REVIEW',
   LOAD_NEAR_OFFERS: 'LOAD_NEAR_OFFERS',
   USER_DATA: 'USER_DATA',
-  UPDATE_LOGIN: 'UPDATE_LOGIN',
 };
 
 export const setCity = createAction<string>(Action.CHANGE_CITY);
@@ -50,6 +49,3 @@ export const requireAuthorization = createAction<AuthorizationStatus>(Action.AUT
 export const setError = createAction<string | null>(Action.SET_ERROR);
 
 export const setUserData = createAction<UserData>(Action.USER_DATA);
-
-export const updateLogin = createAction<string>(Action.UPDATE_LOGIN);
-

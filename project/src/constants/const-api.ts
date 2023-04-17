@@ -5,7 +5,7 @@ export enum APIRoute {
     Logout = '/logout',
   }
 
-export const BASE_URL = 'https://12.react.pages.academy/six-cities-simple';
+export const BACKEND_URL = 'https://12.react.pages.academy/six-cities-simple';
 
 export const REQUEST_TIMEOUT = 5000;
 
