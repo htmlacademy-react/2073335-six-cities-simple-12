@@ -1,7 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
-import { AppRoute, AuthorizationStatus } from '../constants/const';
+import { AppRoute } from '../constants/const';
 import { Offer } from '../types/offer';
 import { Review } from '../types/review';
+import { AuthorizationStatus } from '../constants/const-api';
+import { UserData } from '../types/data';
 
 export const Action = {
   CHANGE_CITY: 'CHANGE_CITY',
@@ -16,6 +18,7 @@ export const Action = {
   LOAD_ID_OFFER: 'LOAD_ID_OFFER',
   LOAD_REVIEW: 'LOAD_REVIEW',
   LOAD_NEAR_OFFERS: 'LOAD_NEAR_OFFERS',
+  USER_DATA: 'USER_DATA',
 };
 
 export const setCity = createAction<string>(Action.CHANGE_CITY);
@@ -44,3 +47,5 @@ export const setOffersDataLoadingStatus = createAction<boolean>(Action.SET_OFFER
 export const requireAuthorization = createAction<AuthorizationStatus>(Action.AUTHORIZATION);
 
 export const setError = createAction<string | null>(Action.SET_ERROR);
+
+export const setUserData = createAction<UserData>(Action.USER_DATA);
