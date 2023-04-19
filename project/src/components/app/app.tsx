@@ -1,5 +1,4 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import ErrorPage from '../../pages/error-page/error-page';
 import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import PropertyPage from '../../pages/property-page/property-page';
@@ -7,6 +6,7 @@ import { AppRoute } from '../../constants/const';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 import { AuthorizationStatus } from '../../constants/const-api';
+import NotFound from '../../pages/not-found/not-found';
 function App(): JSX.Element {
 
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
@@ -37,7 +37,7 @@ function App(): JSX.Element {
         />
         <Route
           path="*"
-          element={<ErrorPage />}
+          element={<NotFound />}
         />
       </Routes>
     </BrowserRouter>

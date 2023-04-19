@@ -34,4 +34,6 @@ export type Offer = {
   title: string;
   type: string;
 }
-export type OfferId = number | null;
+export type OfferId = {
+id: number;
+}

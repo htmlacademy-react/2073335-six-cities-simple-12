@@ -1,12 +1,10 @@
-import {Host} from '../../types/offer';
+import {useAppSelector } from '../../hooks';
 
+function AboutHost(): JSX.Element {
+  const selectedOffer = useAppSelector((state) => state.selectedOffer);
 
-type AboutHostProps = {
-    host: Host;
-    description: string;
-}
+  const {description, host:{avatarUrl, isPro, name}} = selectedOffer;
 
-function AboutHost({host: {name, isPro, avatarUrl}, description}: AboutHostProps): JSX.Element {
 
   return (
     <div className="property__host">
@@ -23,9 +21,6 @@ function AboutHost({host: {name, isPro, avatarUrl}, description}: AboutHostProps
         </span>
       </div>
       <div className="property__description">
-        <p className="property__text">
-          {description}
-        </p>
         <p className="property__text">
           {description}
         </p>
