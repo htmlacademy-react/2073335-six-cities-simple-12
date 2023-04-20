@@ -1,23 +1,43 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { RATING_GRADE } from '../../constants/const';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import { MAX_TEXT_COMMENT, MIN_TEXT_COMMENT, RATING_GRADE } from '../../constants/const';
+import { useAppDispatch } from '../../hooks';
+import { sendReviewAction } from '../../store/api-actions';
 
-function ReviewForm(): JSX.Element {
-  const [formData, setFormData] = useState({
-    rating: '',
-    review: '',
-  });
+function ReviewForm({selectedOffer}: {selectedOffer: number}): JSX.Element {
+  const dispatch = useAppDispatch();
 
-  const fieldChangeHandle = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {name, value} = evt.target;
-    setFormData({...formData, [name]: value});
+
+  const [rating, setRating] = useState(0);
+  const [review, setReview] = useState('');
+  const [disable, setDisabled] = useState(false);
+
+  const onFieldChange = ({ target }:ChangeEvent<HTMLTextAreaElement>) => {
+    setReview(target.value);
   };
 
-  const formSubmitHandle = (evt: FormEvent<HTMLFormElement>) => {
+  const clearForm = () => {
+    setRating(0);
+    setReview('');
+    setDisabled(false);
+  };
+
+  useEffect(() => {
+    setDisabled(!!(review.length > MAX_TEXT_COMMENT || review.length < MIN_TEXT_COMMENT || rating === 0));
+  }, [rating, review]);
+
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    const data = {
+      hotelId: selectedOffer,
+      comment: review,
+      rating: rating,
+    };
+    dispatch(sendReviewAction(data));
+    clearForm();
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post" onSubmit={formSubmitHandle}>
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {RATING_GRADE.map((title, i, arr) => {
@@ -25,13 +45,13 @@ function ReviewForm(): JSX.Element {
           return (
             <React.Fragment key={`${title}-${count}`}>
               <input
-                onChange={fieldChangeHandle}
+                onChange={() => setRating(count)}
                 className="form__rating-input visually-hidden"
                 name="rating"
-                value={formData.rating}
+                value={count}
                 id={`${count}-stars`}
                 type="radio"
-                checked={Number(formData.rating) === count}
+                checked={Number(rating) === count}
               />
               <label
                 htmlFor={`${count}-stars`}
@@ -47,18 +67,18 @@ function ReviewForm(): JSX.Element {
         })}
       </div>
       <textarea
-        onChange={fieldChangeHandle}
+        onChange={onFieldChange}
         className="reviews__textarea form__textarea"
         id="review"
-        value={formData.review}
+        value={review}
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
+          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount"> {MIN_TEXT_COMMENT} characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit">Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={disable} >Submit</button>
       </div>
     </form>
   );

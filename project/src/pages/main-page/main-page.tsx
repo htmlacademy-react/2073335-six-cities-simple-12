@@ -4,12 +4,17 @@ import Map from '../../components/map/map';
 import SortingOption from '../../components/sorting-option/sorting-option';
 import { useAppSelector } from '../../hooks';
 import LocationsList from '../../components/locations-list/locations-list';
+import MainEmpty from '../../components/main-empty/main-empty';
 
 
 function MainPage(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.selectedCity);
   const filteredOffers = useAppSelector((state) => state.filteredOffers);
 
+  if (filteredOffers.length === 0) {
+    return (
+      <MainEmpty/>
+    );}
 
   return (
     <><HeaderElement />

@@ -19,6 +19,9 @@ export const Action = {
   LOAD_REVIEW: 'LOAD_REVIEW',
   LOAD_NEAR_OFFERS: 'LOAD_NEAR_OFFERS',
   USER_DATA: 'USER_DATA',
+  LOAD_COMMENTS: 'LOAD_COMMENTS',
+  LOAD_SELECTED_OFFER: 'LOAD_SELECTED_OFFER',
+  SET_COMMENTS: 'SET_COMMENTS'
 };
 
 export const setCity = createAction<string>(Action.CHANGE_CITY);
@@ -31,21 +34,17 @@ export const selectOffer = createAction(
 );
 
 export const loadOfferById = createAction<Offer>(Action.LOAD_ID_OFFER);
-
-export const loadNearOffers = createAction<Offer>(Action.LOAD_NEAR_OFFERS);
-
-export const loadReviews = createAction<Review>(Action.LOAD_REVIEW);
-
-export const redirectToRoute = createAction<AppRoute>(Action.REDIRECT);
-
 export const loadOffers = createAction<Offer[]>(Action.LOAD_OFFERS);
-
 export const setSortType = createAction<string>(Action.SORT_TYPE);
 
 export const setOffersDataLoadingStatus = createAction<boolean>(Action.SET_OFFERS_DATA);
-
 export const requireAuthorization = createAction<AuthorizationStatus>(Action.AUTHORIZATION);
-
 export const setError = createAction<string | null>(Action.SET_ERROR);
-
 export const setUserData = createAction<UserData>(Action.USER_DATA);
+
+export const loadNearOffers = createAction<Offer[]>(Action.LOAD_NEAR_OFFERS);
+export const loadReviews = createAction<Review[]>(Action.LOAD_REVIEW);
+export const loadSelectedOffer = createAction<Offer>(Action.LOAD_SELECTED_OFFER);
+
+
+export const redirectToRoute = createAction<AppRoute>(Action.REDIRECT);

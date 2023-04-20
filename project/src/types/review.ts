@@ -11,4 +11,10 @@ name: string;
 };
 }
 
+export type ReviewData = {
+    hotelId: number;
+    comment: string;
+    rating: number;
+  }
+
 export type {Review};

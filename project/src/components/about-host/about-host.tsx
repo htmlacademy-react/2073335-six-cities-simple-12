@@ -1,12 +1,9 @@
-import {Host} from '../../types/offer';
+import { Offer } from '../../types/offer';
 
+function AboutHost({selectedOffer}: {selectedOffer: Offer}): JSX.Element {
 
-type AboutHostProps = {
-    host: Host;
-    description: string;
-}
+  const {description, host:{avatarUrl, isPro, name}} = selectedOffer;
 
-function AboutHost({host: {name, isPro, avatarUrl}, description}: AboutHostProps): JSX.Element {
 
   return (
     <div className="property__host">
@@ -23,9 +20,6 @@ function AboutHost({host: {name, isPro, avatarUrl}, description}: AboutHostProps
         </span>
       </div>
       <div className="property__description">
-        <p className="property__text">
-          {description}
-        </p>
         <p className="property__text">
           {description}
         </p>
