@@ -5,11 +5,11 @@ import Map from '../../components/map/map';
 import { ListOffers } from '../../components/list-offers/list-offers';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AuthorizationStatus } from '../../constants/const-api';
-import { Navigate, useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import { fetchNearPlacesAction, fetchReviewsAction, fetchSelectedOfferAction } from '../../store/api-actions';
 import { useEffect } from 'react';
 import HeaderElement from '../../components/header-element/header-element';
-import { AppRoute} from '../../constants/const';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 
 function PropertyPage(): JSX.Element {
@@ -22,9 +22,6 @@ function PropertyPage(): JSX.Element {
   const selectedOffer = useAppSelector((state) => state.selectedOffer);
   const reviews = useAppSelector((state) => state.reviews);
 
-  const {bedrooms, isPremium, title, rating, price, maxAdults, type, images, goods} = selectedOffer;
-  const imagesToRender:string[] = images.slice(0,6);
-
 
   useEffect(() => {
 
@@ -33,11 +30,13 @@ function PropertyPage(): JSX.Element {
     dispatch(fetchReviewsAction({id: currentOfferId}));
   }, [dispatch, currentOfferId]);
 
-  const selectedOfferId = useAppSelector((state) => state.selectedOfferId);
-
-  if (!selectedOfferId) {
-    return <Navigate to={AppRoute.NotFound} />;
+  if (selectedOffer === null) {
+    return <LoadingScreen />;
   }
+
+
+  const {bedrooms, isPremium, title, rating, price, maxAdults, type, images, goods} = selectedOffer;
+  const imagesToRender:string[] = images.slice(0,6);
 
   return (
     <>
@@ -99,11 +98,11 @@ function PropertyPage(): JSX.Element {
                   }
                 </ul>
               </div>
-              <AboutHost />
+              <AboutHost selectedOffer={selectedOffer} />
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                 <ReviewsList/>
-                { authorizationStatus === AuthorizationStatus.Auth && <ReviewForm />}
+                { authorizationStatus === AuthorizationStatus.Auth && <ReviewForm selectedOffer={currentOfferId} />}
               </section>
             </div>
           </div>

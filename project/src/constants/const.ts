@@ -4,7 +4,7 @@ export enum AppRoute {
     Login = '/login',
     Main = '/',
     Room = '/offer/:id',
-    NotFound = '*',
+    NotFound = '/not_found',
   }
 
 export const URL_MARKER_DEFAULT =

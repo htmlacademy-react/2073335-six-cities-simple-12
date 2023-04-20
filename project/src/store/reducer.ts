@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { setSortType, selectOffer, updateOffers, setOffersDataLoadingStatus, requireAuthorization, loadOffers, setError, setUserData, loadNearOffers, loadSelectedOffer, loadReviews } from './action';
-import { CITY_NAMES, OFFERS_SORT_OPTIONS, UNKNOWN_OFFER } from '../constants/const';
+import { CITY_NAMES, OFFERS_SORT_OPTIONS} from '../constants/const';
 import { Offer } from '../types/offer';
 import { AuthorizationStatus } from '../constants/const-api';
 import { UserData } from '../types/data';
@@ -17,7 +17,7 @@ type InitialState = {
   offers: Offer[];
   userData: UserData | null;
   nearOffers: Offer[];
-  selectedOffer: Offer;
+  selectedOffer: Offer | null;
   reviews: Review[];
 };
 
@@ -32,7 +32,7 @@ const initialState: InitialState = {
   filteredOffers: [],
   userData: null,
   nearOffers: [],
-  selectedOffer: UNKNOWN_OFFER,
+  selectedOffer: null,
   reviews: [],
 };
 

@@ -1,7 +1,6 @@
-import {useAppSelector } from '../../hooks';
+import { Offer } from '../../types/offer';
 
-function AboutHost(): JSX.Element {
-  const selectedOffer = useAppSelector((state) => state.selectedOffer);
+function AboutHost({selectedOffer}: {selectedOffer: Offer}): JSX.Element {
 
   const {description, host:{avatarUrl, isPro, name}} = selectedOffer;
 
