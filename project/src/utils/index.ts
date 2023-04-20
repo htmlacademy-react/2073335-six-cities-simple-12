@@ -1,6 +1,7 @@
 import { OFFERS_SORT_OPTIONS } from '../constants/const';
 import { Offer } from '../types/offer';
 import { Review } from '../types/review';
+
 function getSortOffers (a:number, b:number) {
   return (a - b);
 }
@@ -17,7 +18,6 @@ export function sortCards(filteredOffers: Offer[], sortType: string) {
     return current.sort((a, b) => getSortOffers(a.id, b.id));
   }
 }
-
 
 export function ProcessDate (review:Review) {
   const reviewDate = new Date(review.date);

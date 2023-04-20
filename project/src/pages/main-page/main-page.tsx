@@ -10,6 +10,7 @@ import MainEmpty from '../../components/main-empty/main-empty';
 function MainPage(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.selectedCity);
   const filteredOffers = useAppSelector((state) => state.filteredOffers);
+  const offers = useAppSelector((state) => state.offers);
 
   if (filteredOffers.length === 0) {
     return (
@@ -31,10 +32,10 @@ function MainPage(): JSX.Element {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{filteredOffers.length} places to stay in {selectedCity}</b>
               <SortingOption />
-              <ListOffers className={'cities__places-list tabs__content'} cardClassName={'cities'}/>
+              <ListOffers className={'cities__places-list tabs__content'} cardClassName={'cities'} filteredOffers={filteredOffers}/>
             </section>
             <div className="cities__right-section">
-              <Map className={'cities__map'} style={{ height: '770px' }}/>
+              <Map className={'cities__map'} style={{ height: '770px' }} offers={offers} />
             </div>
           </div>
         </div>

@@ -21,6 +21,7 @@ function PropertyPage(): JSX.Element {
 
   const selectedOffer = useAppSelector((state) => state.selectedOffer);
   const reviews = useAppSelector((state) => state.reviews);
+  const nearOffers = useAppSelector((state) => state.nearOffers);
 
 
   useEffect(() => {
@@ -37,6 +38,11 @@ function PropertyPage(): JSX.Element {
 
   const {bedrooms, isPremium, title, rating, price, maxAdults, type, images, goods} = selectedOffer;
   const imagesToRender:string[] = images.slice(0,6);
+
+  const mapOffers = [...nearOffers];
+  if (selectedOffer) {
+    mapOffers.push(selectedOffer);
+  }
 
   return (
     <>
@@ -106,12 +112,12 @@ function PropertyPage(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map className="property__map" style={{ height: '770px' }}/>
+          <Map className="property__map" style={{ height: '770px' }} offers={mapOffers} />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <ListOffers className={'near-places__list'} cardClassName={'near-places'} />
+            <ListOffers className={'near-places__list'} cardClassName={'near-places'} filteredOffers={nearOffers} />
           </section>
         </div>
       </main>

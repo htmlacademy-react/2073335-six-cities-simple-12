@@ -1,4 +1,5 @@
 import {useAppSelector } from '../../hooks';
+import { Offer } from '../../types/offer';
 import { sortCards } from '../../utils';
 import CardOffers from '../offer-card/offer-card';
 import {useState} from 'react';
@@ -6,11 +7,11 @@ import {useState} from 'react';
 type ListOffersProps = {
     cardClassName: string;
     className: string;
+    filteredOffers: Offer[];
 }
 
-function ListOffers({cardClassName, className}: ListOffersProps): JSX.Element {
+function ListOffers({cardClassName, className, filteredOffers}: ListOffersProps): JSX.Element {
   const selectedSort = useAppSelector((state) => state.sortType);
-  const filteredOffers = useAppSelector((state) => state.filteredOffers);
 
   const cardsSort = sortCards(filteredOffers, selectedSort);
 

@@ -5,6 +5,7 @@ import { Icon, Marker} from 'leaflet';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {useAppSelector } from '../../hooks';
+import { Offer } from '../../types/offer';
 
 type StyleMap = {
   height: string;
@@ -13,6 +14,7 @@ type StyleMap = {
 type MapProps = {
 className: string;
 style: StyleMap;
+offers: Offer[];
 }
 
 const defaultCustomIcon = new Icon({
@@ -28,9 +30,8 @@ const currentCustomIcon = new Icon({
 });
 
 
-function Map({className, style}: MapProps): JSX.Element {
+function Map({className, style, offers}: MapProps): JSX.Element {
   const mapRef = useRef(null);
-  const offers = useAppSelector((state) => state.offers);
   const filteredOffers = useAppSelector((state) => state.filteredOffers);
   const selectedOfferId = useAppSelector((state) => state.selectedOfferId);
 
@@ -48,7 +49,7 @@ function Map({className, style}: MapProps): JSX.Element {
 
 
   useEffect(() => {
-    if (map) {
+    if (map && offers) {
       const markerGroup = leaflet.layerGroup().addTo(map);
       markerGroup.clearLayers();
       offers.forEach((offer) => {
@@ -59,7 +60,7 @@ function Map({className, style}: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            offer.id === selectedOfferId
+            selectedOfferId === offer.id
               ? currentCustomIcon
               : defaultCustomIcon
           )
