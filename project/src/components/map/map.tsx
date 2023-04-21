@@ -34,11 +34,11 @@ function Map({className, style, offers}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const filteredOffers = useAppSelector((state) => state.filteredOffers);
   const selectedOfferId = useAppSelector((state) => state.selectedOfferId);
+  const selectedOffer = useAppSelector((state) => state.selectedOffer);
 
 
   const cityLocation = filteredOffers[0].city.location;
   const map = useMap(mapRef, cityLocation);
-
 
   useEffect(() => {
     if (map) {
@@ -46,7 +46,6 @@ function Map({className, style, offers}: MapProps): JSX.Element {
       map.flyTo([latitude, longitude], zoom);
     }
   }, [map, cityLocation]);
-
 
   useEffect(() => {
     if (map && offers) {
@@ -58,20 +57,30 @@ function Map({className, style, offers}: MapProps): JSX.Element {
           lng: offer.location.longitude,
         });
 
-        marker
-          .setIcon(
-            selectedOfferId === offer.id
-              ? currentCustomIcon
-              : defaultCustomIcon
-          )
-          .addTo(markerGroup);
+        if (className === 'property__map') {
+          marker
+            .setIcon(
+              selectedOffer?.id === offer.id
+                ? currentCustomIcon
+                : defaultCustomIcon
+            )
+            .addTo(markerGroup);
+        } else {
+          marker
+            .setIcon(
+              selectedOfferId === offer.id
+                ? currentCustomIcon
+                : defaultCustomIcon
+            )
+            .addTo(markerGroup);
+        }
       });
       return () => {
         map.removeLayer(markerGroup);
       };
 
     }
-  }, [map, offers, selectedOfferId, cityLocation]);
+  }, [map, offers, selectedOfferId, cityLocation, selectedOffer, className]);
 
 
   return (

@@ -2,7 +2,7 @@ import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError} fro
 import {StatusCodes} from 'http-status-codes';
 import {getToken} from './token';
 import { processErrorHandle } from './proccess-error-handle';
-import { BACKEND_URL, REQUEST_TIMEOUT } from '../constants/const-api';
+import { BACKEND_URL, REQUEST_TIMEOUT, TOKEN_HEADER_NAME } from '../constants/const-api';
 
 const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.BAD_REQUEST]: true,
@@ -22,7 +22,7 @@ export const createAPI = (): AxiosInstance => {
     const token = getToken();
 
     if (token && config.headers) {
-      config.headers['x-token'] = token;
+      config.headers[TOKEN_HEADER_NAME] = token;
     }
 
     return config;

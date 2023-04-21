@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setSortType } from '../../store/action';
-import { OFFERS_SORT_OPTIONS } from '../../constants/const';
+import { sortOptions } from '../../constants/const';
 
 function SortingOption(): JSX.Element {
   const activeSortType = useAppSelector((state) => state.sortType);
@@ -28,7 +28,7 @@ function SortingOption(): JSX.Element {
       </span>
       {isOpenSortList && (
         <ul className='places__options places__options--custom places__options--opened'>
-          {OFFERS_SORT_OPTIONS.map((item) => <li className='places__option' onClick={() => handleChooseSort(item)} tabIndex={0} key={item}>{item}</li>)}
+          {sortOptions.map((item) => <li className='places__option' onClick={() => handleChooseSort(item)} tabIndex={0} key={item}>{item}</li>)}
         </ul>
       )}
     </form>
