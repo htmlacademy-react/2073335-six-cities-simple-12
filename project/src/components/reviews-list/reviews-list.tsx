@@ -1,6 +1,6 @@
 import { MAX_COUNT_REVIEWS } from '../../constants/const';
 import { useAppSelector } from '../../hooks';
-import {ReviewsSort} from '../../utils';
+import {sortReviews} from '../../utils';
 import { ReviewsItem } from '../reviews-item/reviews-item';
 
 function ReviewsList(): JSX.Element {
@@ -8,7 +8,7 @@ function ReviewsList(): JSX.Element {
 
   return (
     <ul className="reviews__list">
-      {ReviewsSort(reviews).slice(0, MAX_COUNT_REVIEWS).map((comment) => (
+      {sortReviews(reviews).slice(0, MAX_COUNT_REVIEWS).map((comment) => (
         <ReviewsItem
           key={comment.id}
           comment={comment.comment}
