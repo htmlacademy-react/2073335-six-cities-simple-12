@@ -6,13 +6,11 @@ import {updateOffers } from '../../store/action';
 function LocationsItems(): JSX.Element {
   const dispatch = useAppDispatch();
   const currentLocation = useAppSelector((state) => state.selectedCity);
-  const citiesNames = cityNames;
-
 
   return (
     <>
       {
-        citiesNames.map((cityName) => (
+        cityNames.map((cityName) => (
           <li className="locations__item" key={cityName}>
             <Link
               className={`locations__item-link tabs__item ${cityName === currentLocation ? 'tabs__item--active' : ''} `}
