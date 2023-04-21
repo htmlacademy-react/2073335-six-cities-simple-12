@@ -1,4 +1,4 @@
-import { OFFERS_SORT_OPTIONS } from '../constants/const';
+import { sortOptions } from '../constants/const';
 import { Offer } from '../types/offer';
 import { Review } from '../types/review';
 
@@ -8,11 +8,11 @@ function getSortOffers (a:number, b:number) {
 
 export function sortCards(filteredOffers: Offer[], sortType: string) {
   const current = [...filteredOffers];
-  if (sortType === OFFERS_SORT_OPTIONS[1]) {
+  if (sortType === sortOptions[1]) {
     return current.sort((a, b) => getSortOffers(a.price, b.price));
-  } else if (sortType === OFFERS_SORT_OPTIONS[2]) {
+  } else if (sortType === sortOptions[2]) {
     return current.sort((a, b) => getSortOffers(b.price, a.price));
-  } else if (sortType === OFFERS_SORT_OPTIONS[3]) {
+  } else if (sortType === sortOptions[3]) {
     return current.sort((a, b) => getSortOffers(b.rating, a.rating));
   } else {
     return current.sort((a, b) => getSortOffers(a.id, b.id));
@@ -28,10 +28,9 @@ export function ProcessDate (review:Review) {
   return [reviewTime, reviewDateTime];
 }
 
-function ReviewsSort(reviews: Review[]) {
+export function ReviewsSort(reviews: Review[]) {
   const items = [...reviews];
   items.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
   return items;
 }
 
-export default ReviewsSort;

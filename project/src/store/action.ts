@@ -24,8 +24,6 @@ export const Action = {
   SET_COMMENTS: 'SET_COMMENTS'
 };
 
-export const setCity = createAction<string>(Action.CHANGE_CITY);
-
 export const updateOffers = createAction<string>(Action.UPDATE_OFFERS);
 
 export const selectOffer = createAction(
@@ -33,7 +31,6 @@ export const selectOffer = createAction(
   (offerId: number | null) => ({payload: offerId})
 );
 
-export const loadOfferById = createAction<Offer>(Action.LOAD_ID_OFFER);
 export const loadOffers = createAction<Offer[]>(Action.LOAD_OFFERS);
 export const setSortType = createAction<string>(Action.SORT_TYPE);
 

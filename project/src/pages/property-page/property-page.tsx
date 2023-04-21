@@ -35,7 +35,6 @@ function PropertyPage(): JSX.Element {
     return <LoadingScreen />;
   }
 
-
   const {bedrooms, isPremium, title, rating, price, maxAdults, type, images, goods} = selectedOffer;
   const imagesToRender:string[] = images.slice(0,6);
 
@@ -57,14 +56,15 @@ function PropertyPage(): JSX.Element {
                     <img className="property__image" src={image} alt="Pic studio" />
                   </div>
                 ))
-              };
+              }
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                {isPremium && (<span>Premium</span>)}
-              </div>
+              { isPremium ?
+                <div className="property__mark">
+                  <span>Premium</span>
+                </div> : '' }
               <div className="property__name-wrapper">
                 <h1 className="property__name">
                   {title}
@@ -72,7 +72,7 @@ function PropertyPage(): JSX.Element {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: '80%'}}></span>
+                  <span style={{width:`${Math.round(rating) * 20}%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>

@@ -12,11 +12,6 @@ function MainPage(): JSX.Element {
   const filteredOffers = useAppSelector((state) => state.filteredOffers);
   const offers = useAppSelector((state) => state.offers);
 
-  if (filteredOffers.length === 0) {
-    return (
-      <MainEmpty/>
-    );}
-
   return (
     <><HeaderElement />
       <main className="page__main page__main--index">
@@ -27,18 +22,21 @@ function MainPage(): JSX.Element {
           </section>
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{filteredOffers.length} places to stay in {selectedCity}</b>
-              <SortingOption />
-              <ListOffers className={'cities__places-list tabs__content'} cardClassName={'cities'} filteredOffers={filteredOffers}/>
-            </section>
-            <div className="cities__right-section">
-              <Map className={'cities__map'} style={{ height: '770px' }} offers={offers} />
+          { filteredOffers.length > 0 ?
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{filteredOffers.length} places to stay in {selectedCity}</b>
+                <SortingOption />
+                <ListOffers className={'cities__places-list tabs__content'} cardClassName={'cities'} filteredOffers={filteredOffers}/>
+              </section>
+              <div className="cities__right-section">
+                <Map className={'cities__map'} style={{ height: '770px' }} offers={offers} />
+              </div>
             </div>
-          </div>
+            : <MainEmpty/>}
         </div>
+
       </main>
     </>
   );
