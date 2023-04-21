@@ -19,7 +19,7 @@ function SortingOption(): JSX.Element {
 
   return (
     <form className="places__sorting" action="#" method="get">
-      <span className="places__sorting-caption">Sort by</span>
+      <span className="places__sorting-caption" style={{ marginRight: '5px' }}>Sort by</span>
       <span className="places__sorting-type" tabIndex={0} onClick={handleOpenSortList}>
         {activeSortType}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -28,7 +28,15 @@ function SortingOption(): JSX.Element {
       </span>
       {isOpenSortList && (
         <ul className='places__options places__options--custom places__options--opened'>
-          {sortOptions.map((item) => <li className={item === activeSortType ? 'places__option--active' : 'places__option'} onClick={() => handleChooseSort(item)} tabIndex={0} key={item}>{item}</li>)}
+          {sortOptions.map((item) => (
+            <li
+              className={`places__option${
+                item === activeSortType ? ' places__option--active' : ''
+              }`}
+              onClick={() => handleChooseSort(item)} tabIndex={0} key={item}
+            >
+              {item}
+            </li>))}
         </ul>
       )}
     </form>
