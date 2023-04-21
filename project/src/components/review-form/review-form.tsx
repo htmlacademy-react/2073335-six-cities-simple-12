@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
-import { MAX_TEXT_COMMENT, MIN_TEXT_COMMENT, RATING_GRADE } from '../../constants/const';
+import { MAX_TEXT_COMMENT, MIN_TEXT_COMMENT, ratingGrades } from '../../constants/const';
 import { useAppDispatch } from '../../hooks';
 import { sendReviewAction } from '../../store/api-actions';
 
@@ -40,7 +40,7 @@ function ReviewForm({selectedOffer}: {selectedOffer: number}): JSX.Element {
     <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {RATING_GRADE.map((title, i, arr) => {
+        {ratingGrades.map((title, i, arr) => {
           const count = arr.length - i;
           return (
             <React.Fragment key={`${title}-${count}`}>

@@ -6,7 +6,6 @@ import { AuthorizationStatus } from '../constants/const-api';
 import { UserData } from '../types/data';
 
 export const Action = {
-  CHANGE_CITY: 'CHANGE_CITY',
   UPDATE_OFFERS: 'UPDATE_OFFERS',
   SELECT_OFFER: 'SELECT_OFFER',
   SORT_TYPE: 'SORT_TYPE',
@@ -15,7 +14,6 @@ export const Action = {
   REDIRECT: 'REDIRECT',
   LOAD_OFFERS: 'LOAD_OFFERS',
   SET_ERROR: 'SET_ERROR',
-  LOAD_ID_OFFER: 'LOAD_ID_OFFER',
   LOAD_REVIEW: 'LOAD_REVIEW',
   LOAD_NEAR_OFFERS: 'LOAD_NEAR_OFFERS',
   USER_DATA: 'USER_DATA',
@@ -24,8 +22,6 @@ export const Action = {
   SET_COMMENTS: 'SET_COMMENTS'
 };
 
-export const setCity = createAction<string>(Action.CHANGE_CITY);
-
 export const updateOffers = createAction<string>(Action.UPDATE_OFFERS);
 
 export const selectOffer = createAction(
@@ -33,7 +29,6 @@ export const selectOffer = createAction(
   (offerId: number | null) => ({payload: offerId})
 );
 
-export const loadOfferById = createAction<Offer>(Action.LOAD_ID_OFFER);
 export const loadOffers = createAction<Offer[]>(Action.LOAD_OFFERS);
 export const setSortType = createAction<string>(Action.SORT_TYPE);
 

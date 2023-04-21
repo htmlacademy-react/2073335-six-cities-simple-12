@@ -1,6 +1,6 @@
 import { MAX_COUNT_REVIEWS } from '../../constants/const';
 import { useAppSelector } from '../../hooks';
-import ReviewsSort from '../../utils';
+import {ReviewsSort} from '../../utils';
 import { ReviewsItem } from '../reviews-item/reviews-item';
 
 function ReviewsList(): JSX.Element {

@@ -46,4 +46,5 @@ function LoginUser(): JSX.Element {
     </nav>
   );
 }
+
 export default LoginUser;

@@ -6,11 +6,10 @@ import { selectOffer } from '../../store/action';
 
 type OfferCardProps = {
   offer: Offer;
-  setActiveCard: (id: number) => void;
   cardClassName: string;
 }
 
-function OfferCard({offer: {isPremium, type, price, title, id, images}, cardClassName, setActiveCard}: OfferCardProps): JSX.Element {
+function OfferCard({offer: {isPremium, type, price, title, id, images, rating}, cardClassName}: OfferCardProps): JSX.Element {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -42,7 +41,7 @@ function OfferCard({offer: {isPremium, type, price, title, id, images}, cardClas
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{ width: '80%' }}></span>
+              <span style={{width:`${Math.round(rating) * 20}%`}}></span>
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
