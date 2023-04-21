@@ -19,7 +19,7 @@ export function sortCards(filteredOffers: Offer[], sortType: string) {
   }
 }
 
-export function ProcessDate (review:Review) {
+export function getProcessDate (review:Review) {
   const reviewDate = new Date(review.date);
   const monthName = reviewDate.toLocaleString('en-EN', { month: 'long' });
   const reviewTime = `${monthName} ${reviewDate.getFullYear()}`;
@@ -28,7 +28,7 @@ export function ProcessDate (review:Review) {
   return [reviewTime, reviewDateTime];
 }
 
-export function ReviewsSort(reviews: Review[]) {
+export function sortReviews(reviews: Review[]) {
   const items = [...reviews];
   items.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
   return items;

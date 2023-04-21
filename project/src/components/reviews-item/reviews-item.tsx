@@ -1,9 +1,9 @@
 import { Review } from '../../types/review';
-import { ProcessDate } from '../../utils';
+import { getProcessDate } from '../../utils';
 
 function ReviewsItem(review: Review): JSX.Element {
   const visuallyRating = `${Math.round(review.rating) / 5 * 100}%`;
-  const [reviewTime, reviewDateTime] = ProcessDate(review);
+  const [reviewTime, reviewDateTime] = getProcessDate(review);
 
   return (
     <li className="reviews__item">

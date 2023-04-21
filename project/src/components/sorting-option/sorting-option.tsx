@@ -28,7 +28,7 @@ function SortingOption(): JSX.Element {
       </span>
       {isOpenSortList && (
         <ul className='places__options places__options--custom places__options--opened'>
-          {sortOptions.map((item) => <li className='places__option' onClick={() => handleChooseSort(item)} tabIndex={0} key={item}>{item}</li>)}
+          {sortOptions.map((item) => <li className={item === activeSortType ? 'places__option--active' : 'places__option'} onClick={() => handleChooseSort(item)} tabIndex={0} key={item}>{item}</li>)}
         </ul>
       )}
     </form>

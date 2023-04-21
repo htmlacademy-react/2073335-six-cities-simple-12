@@ -6,7 +6,7 @@ import {updateOffers } from '../../store/action';
 function LocationsItems(): JSX.Element {
   const dispatch = useAppDispatch();
   const currentLocation = useAppSelector((state) => state.selectedCity);
-  const citiesNames = Object.values(cityNames);
+  const citiesNames = cityNames;
 
 
   return (
