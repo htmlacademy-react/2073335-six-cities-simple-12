@@ -6,9 +6,9 @@ export enum AppRoute {
     NotFound = '/not_found',
   }
 
-export const ratingGrades: string[] = ['perfect', 'so good', 'nice', 'bad', 'horrible'];
+export const RATING_GRADES: string[] = ['perfect', 'so good', 'nice', 'bad', 'horrible'];
 
-export const cityNames = [
+export const CITY_NAMES = [
   'Paris',
   'Cologne',
   'Brussels',
@@ -17,7 +17,7 @@ export const cityNames = [
   'Dusseldorf'
 ];
 
-export const sortOptions = [
+export const SORT_OPTIONS = [
   'Popular',
   'Price: low to high',
   'Price: high to low',

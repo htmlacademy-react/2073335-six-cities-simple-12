@@ -8,8 +8,10 @@ import { AuthorizationStatus } from '../../constants/const-api';
 import {useParams } from 'react-router-dom';
 import { fetchNearPlacesAction, fetchReviewsAction, fetchSelectedOfferAction } from '../../store/api-actions';
 import { useEffect } from 'react';
-import HeaderElement from '../../components/header-element/header-element';
 import LoadingScreen from '../loading-screen/loading-screen';
+import Logo from '../../components/logo/logo';
+import LoginUser from '../../components/login-user/login-user';
+import NotFound from '../not-found/not-found';
 
 
 function PropertyPage(): JSX.Element {
@@ -23,7 +25,6 @@ function PropertyPage(): JSX.Element {
   const reviews = useAppSelector((state) => state.reviews);
   const nearOffers = useAppSelector((state) => state.nearOffers);
 
-
   useEffect(() => {
 
     dispatch(fetchSelectedOfferAction(currentOfferId));
@@ -31,9 +32,14 @@ function PropertyPage(): JSX.Element {
     dispatch(fetchReviewsAction({id: currentOfferId}));
   }, [dispatch, currentOfferId]);
 
-  if (selectedOffer === null) {
-    return <LoadingScreen />;
+  if (isNaN(currentOfferId) || id === null) {
+    return <NotFound />;
   }
+
+  if (selectedOffer === null) {
+    return <LoadingScreen/>;
+  }
+
 
   const {bedrooms, isPremium, title, rating, price, maxAdults, type, images, goods} = selectedOffer;
   const imagesToRender:string[] = images.slice(0,6);
@@ -45,7 +51,15 @@ function PropertyPage(): JSX.Element {
 
   return (
     <>
-      <HeaderElement/>
+      <header className="header">
+        <div className="container">
+          <div className="header__wrapper">
+            <Logo/>
+            <LoginUser/>
+          </div>
+        </div>
+      </header>
+
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">

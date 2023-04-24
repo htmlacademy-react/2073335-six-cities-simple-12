@@ -1,10 +1,11 @@
-import HeaderElement from '../../components/header-element/header-element';
 import { ListOffers } from '../../components/list-offers/list-offers';
 import Map from '../../components/map/map';
 import SortingOption from '../../components/sorting-option/sorting-option';
 import { useAppSelector } from '../../hooks';
 import LocationsList from '../../components/locations-list/locations-list';
 import MainEmpty from '../../components/main-empty/main-empty';
+import LoginUser from '../../components/login-user/login-user';
+import Logo from '../../components/logo/logo';
 
 
 function MainPage(): JSX.Element {
@@ -13,7 +14,15 @@ function MainPage(): JSX.Element {
   const offers = useAppSelector((state) => state.offers);
 
   return (
-    <><HeaderElement />
+    <>
+      <header className="header">
+        <div className="container">
+          <div className="header__wrapper">
+            <Logo/>
+            <LoginUser />
+          </div>
+        </div>
+      </header>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
@@ -36,9 +45,9 @@ function MainPage(): JSX.Element {
             </div>
             : <MainEmpty/>}
         </div>
-
       </main>
     </>
+
   );
 }
 

@@ -36,7 +36,7 @@ function App(): JSX.Element {
           }
         />
         <Route
-          path={AppRoute.NotFound}
+          path='*'
           element={<NotFound />}
         />
       </Routes>
