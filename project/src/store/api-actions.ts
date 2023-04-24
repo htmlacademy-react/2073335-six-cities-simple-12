@@ -9,6 +9,7 @@ import {store} from './';
 import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus} from '../constants/const-api';
 import { AuthData, UserData } from '../types/data';
 import { Review, ReviewData} from '../types/review';
+import { processErrorHandle } from '../services/proccess-error-handle';
 
 
 export const clearErrorAction = createAsyncThunk(
@@ -59,11 +60,15 @@ export const loginAction = createAsyncThunk<void, AuthData, {
 }>(
   'user/login',
   async ({login: email, password}, {dispatch, extra: api}) => {
-    const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
-    dispatch(setUserData(data));
-    saveToken(data.token);
-    dispatch(requireAuthorization(AuthorizationStatus.Auth));
-    dispatch(redirectToRoute(AppRoute.Login));
+    try {
+      const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
+      dispatch(setUserData(data));
+      saveToken(data.token);
+      dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      dispatch(redirectToRoute(AppRoute.Login));
+    } catch {
+      processErrorHandle('Что-то пошло не так. Обновите страницу и попробуйте еще раз');
+    }
   },
 );
 
@@ -124,8 +129,13 @@ export const sendReviewAction = createAsyncThunk<void, ReviewData, {
 }>(
   'user/sendReview',
   async ({hotelId, comment, rating}, {dispatch, extra: api}) => {
-    const {data: review} = await api.post<Review[]>(`${APIRoute.Comments}/${hotelId}`, {comment, rating});
-    dispatch(loadReviews(review));
+    try {
+      const {data: review} = await api.post<Review[]>(`${APIRoute.Comments}/${hotelId}`, {comment, rating});
+      dispatch(loadReviews(review));
+    } catch {
+      processErrorHandle('Что-то пошло не так. Обновите страницу и попробуйте еще раз');
+
+    }
   },
 );
 

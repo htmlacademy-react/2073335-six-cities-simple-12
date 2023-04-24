@@ -1,4 +1,4 @@
-import { sortOptions } from '../constants/const';
+import { SORT_OPTIONS } from '../constants/const';
 import { Offer } from '../types/offer';
 import { Review } from '../types/review';
 
@@ -8,11 +8,11 @@ function getSortOffers (a:number, b:number) {
 
 export function sortCards(filteredOffers: Offer[], sortType: string) {
   const current = [...filteredOffers];
-  if (sortType === sortOptions[1]) {
+  if (sortType === SORT_OPTIONS[1]) {
     return current.sort((a, b) => getSortOffers(a.price, b.price));
-  } else if (sortType === sortOptions[2]) {
+  } else if (sortType === SORT_OPTIONS[2]) {
     return current.sort((a, b) => getSortOffers(b.price, a.price));
-  } else if (sortType === sortOptions[3]) {
+  } else if (sortType === SORT_OPTIONS[3]) {
     return current.sort((a, b) => getSortOffers(b.rating, a.rating));
   } else {
     return current.sort((a, b) => getSortOffers(a.id, b.id));

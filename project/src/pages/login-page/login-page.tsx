@@ -1,11 +1,11 @@
 import { FormEvent, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthorizationStatus } from '../../constants/const-api';
 import { AppRoute } from '../../constants/const';
-import HeaderElement from '../../components/header-element/header-element';
 import { AuthData } from '../../types/data';
+import Logo from '../../components/logo/logo';
 
 
 function LoginPage(): JSX.Element {
@@ -39,8 +39,16 @@ function LoginPage(): JSX.Element {
     );}
 
   return (
-    <>
-      <HeaderElement />
+    <div className="page page--gray page--login">
+
+      <header className="header">
+        <div className="container">
+          <div className="header__wrapper">
+            <Logo/>
+          </div>
+        </div>
+      </header>
+
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
@@ -59,14 +67,15 @@ function LoginPage(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="/#">
+              <Link className="locations__item-link" to={AppRoute.Main}>
                 <span>{selectedCity}</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
       </main>
-    </>
+    </div>
+
   );
 }
 
